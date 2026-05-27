@@ -31,12 +31,6 @@ function playHover() {
   playTone(500, 0.04, 0.03, 'sine');
 }
 
-// Mobile menu toggle
-document.querySelector('.menu-toggle')?.addEventListener('click', () => {
-  document.querySelector('.nav-links')?.classList.toggle('open');
-  playClick();
-});
-
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
@@ -45,58 +39,62 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth' });
     }
-    document.querySelector('.nav-links')?.classList.remove('open');
   });
 });
 
-// Language switcher
+// Language switcher (EN / TR / JP)
+const langs = ['en', 'tr', 'jp'];
 let currentLang = 'en';
 
 function setLang(lang) {
   currentLang = lang;
+
+  // Update all data-* attributes
   document.querySelectorAll('[data-en]').forEach(el => {
-    if (lang === 'en' && el.dataset.en) {
-      el.innerHTML = el.dataset.en;
-    } else if (lang === 'tr' && el.dataset.tr) {
-      el.innerHTML = el.dataset.tr;
+    const val = el.dataset[lang];
+    if (val) {
+      el.innerHTML = val;
     }
   });
 
-  document.querySelectorAll('.game-desc-en, .game-desc-tr').forEach(el => {
-    el.style.display = 'none';
-  });
-  document.querySelectorAll('.game-status, .game-status-tr').forEach(el => {
-    el.style.display = 'none';
-  });
-  document.querySelectorAll('.game-desc-' + lang).forEach(el => {
-    el.style.display = '';
-  });
-  document.querySelectorAll('.game-status' + (lang === 'tr' ? '-tr' : '')).forEach(el => {
-    el.style.display = '';
+  // Toggle game description/status
+  ['game-desc', 'game-status'].forEach(cls => {
+    document.querySelectorAll('[class*="' + cls + '-"]').forEach(el => {
+      el.style.display = 'none';
+    });
+    document.querySelectorAll('.' + cls + '-' + lang).forEach(el => {
+      el.style.display = '';
+    });
   });
 
-  document.querySelectorAll('.about-text-en, .about-text-tr').forEach(el => {
+  // Toggle about text blocks
+  document.querySelectorAll('[class^="about-text-"]').forEach(el => {
     el.style.display = 'none';
   });
-  document.querySelector('.about-text-' + lang).style.display = '';
+  const aboutEl = document.querySelector('.about-text-' + lang);
+  if (aboutEl) aboutEl.style.display = '';
 
-  document.querySelectorAll('.lang-en, .lang-tr').forEach(el => el.classList.remove('active-lang'));
+  // Update toggle UI
+  document.querySelectorAll('.lang-en, .lang-tr, .lang-jp').forEach(el => el.classList.remove('active-lang'));
   document.querySelector('.lang-' + lang)?.classList.add('active-lang');
+
+  // Apply JP font when Japanese selected
+  document.body.classList.toggle('lang-jp-active', lang === 'jp');
 }
 
 document.getElementById('langToggle')?.addEventListener('click', () => {
-  setLang(currentLang === 'en' ? 'tr' : 'en');
+  const idx = langs.indexOf(currentLang);
+  const next = langs[(idx + 1) % langs.length];
+  setLang(next);
 });
 
-// Interactive sounds for all clickable and hoverable elements
+// Interactive sounds
 document.addEventListener('DOMContentLoaded', () => {
-  // Add click sounds
-  document.querySelectorAll('a, button, .btn, .btn-primary, .btn-outline, .nav-cta, .lang-toggle, .menu-toggle, .btn-trailer').forEach(el => {
+  document.querySelectorAll('a, button, .btn, .btn-primary, .btn-outline, .nav-cta, .lang-toggle, .btn-trailer').forEach(el => {
     el.addEventListener('click', playClick);
     el.addEventListener('mouseenter', playHover);
   });
 
-  // Hover for all nav-links, game cards, stat cards, contact cards, footer links, social links
   document.querySelectorAll('.nav-links a, .game-card, .stat, .contact-card, .footer-links a, .footer-social a, .founder-card, .value-item').forEach(el => {
     el.addEventListener('mouseenter', playHover);
   });

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,7 +6,7 @@
   <title><%= title %></title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="vignette"></div>
@@ -20,19 +20,19 @@
         <span class="logo-text">GhostPath Studio</span>
       </a>
       <ul class="nav-links">
-        <li><a href="/" class="<%= currentPage === 'home' ? 'active' : '' %>" data-en="Home" data-tr="Ana Sayfa">Home</a></li>
-        <li><a href="#games" data-en="Games" data-tr="Oyunlar">Games</a></li>
-        <li><a href="#founders" data-en="Team" data-tr="Ekip">Team</a></li>
-        <li><a href="#about" data-en="About" data-tr="Hakkında">About</a></li>
-        <li><a href="#contact" class="nav-cta" data-en="Contact" data-tr="İletişim">Contact</a></li>
+        <li><a href="/" class="<%= currentPage === 'home' ? 'active' : '' %>" data-en="Home" data-tr="Ana Sayfa" data-jp="ホーム">Home</a></li>
+        <li><a href="#games" data-en="Games" data-tr="Oyunlar" data-jp="ゲーム">Games</a></li>
+        <li><a href="#founders" data-en="Team" data-tr="Ekip" data-jp="チーム">Team</a></li>
+        <li><a href="#news" data-en="News" data-tr="Haberler" data-jp="ニュース">News</a></li>
+        <li><a href="#about" data-en="About" data-tr="Hakkında" data-jp="について">About</a></li>
+        <li><a href="#contact" class="nav-cta" data-en="Contact" data-tr="İletişim" data-jp="お問い合わせ">Contact</a></li>
       </ul>
       <button class="lang-toggle" id="langToggle" aria-label="Switch language">
         <span class="lang-en active-lang">EN</span>
         <span class="lang-sep">|</span>
         <span class="lang-tr">TR</span>
-      </button>
-      <button class="menu-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
+        <span class="lang-sep">|</span>
+        <span class="lang-jp">JP</span>
       </button>
     </nav>
   </header>
