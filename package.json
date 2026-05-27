@@ -1,0 +1,14 @@
+{
+  "name": "ghostpath-studio",
+  "version": "1.0.0",
+  "description": "GhostPath Studio - Modern Digital Agency",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
