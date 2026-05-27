@@ -1,7 +1,7 @@
 {
   "name": "ghostpath-studio",
   "version": "1.0.0",
-  "description": "GhostPath Studio - Modern Digital Agency",
+  "description": "GhostPath Studio - Indie Game Development Studio",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
