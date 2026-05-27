@@ -60,10 +60,24 @@ body.lang-jp-active p {
 }
 
 /* Fixed overlays */
-.stars-canvas {
+.brick-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
+  background-color: #111111;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='150' viewBox='0 0 360 150'%3E%3C!-- Mortar --%3E%3Crect width='360' height='150' fill='%23141414'/%3E%3C!-- Row 1 --%3E%3Crect x='2' y='2' width='116' height='71' fill='%231c1c1c'/%3E%3Crect x='121' y='2' width='116' height='71' fill='%231e1e1e'/%3E%3Crect x='240' y='2' width='118' height='71' fill='%231a1a1a'/%3E%3C!-- Row 1 moss --%3E%3Crect x='121' y='2' width='116' height='71' fill='%231a1e1a'/%3E%3C!-- Row 1 rust --%3E%3Crect x='240' y='2' width='118' height='71' fill='%231e1818'/%3E%3C!-- Row 1 depth --%3E%3Crect x='2' y='2' width='116' height='71' fill='url(%23shade)'/%3E%3Crect x='121' y='2' width='116' height='71' fill='url(%23shade)'/%3E%3Crect x='240' y='2' width='118' height='71' fill='url(%23shade)'/%3E%3C!-- Row 2 (offset) --%3E%3Crect x='-59' y='77' width='118' height='71' fill='%23202020'/%3E%3Crect x='62' y='77' width='116' height='71' fill='%231d1d1d'/%3E%3Crect x='181' y='77' width='118' height='71' fill='%231f1f1f'/%3E%3C!-- Row 2 moss/var --%3E%3Crect x='-59' y='77' width='118' height='71' fill='%231b1f1b'/%3E%3Crect x='181' y='77' width='118' height='71' fill='%231f1919'/%3E%3C!-- Row 2 depth --%3E%3Crect x='-59' y='77' width='118' height='71' fill='url(%23shade)'/%3E%3Crect x='62' y='77' width='116' height='71' fill='url(%23shade)'/%3E%3Crect x='181' y='77' width='118' height='71' fill='url(%23shade)'/%3E%3C!-- Cracks --%3E%3Cline x1='55' y1='2' x2='58' y2='40' stroke='%230a0a0a' stroke-width='0.8' opacity='0.4'/%3E%3Cline x1='280' y1='30' x2='285' y2='73' stroke='%230a0a0a' stroke-width='0.6' opacity='0.3'/%3E%3Cline x1='140' y1='85' x2='145' y2='130' stroke='%230a0a0a' stroke-width='0.7' opacity='0.35'/%3E%3Cdefs%3E%3ClinearGradient id='shade' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23fff' stop-opacity='0.05'/%3E%3Cstop offset='25%25' stop-color='%23fff' stop-opacity='0'/%3E%3Cstop offset='75%25' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='100%25' stop-color='%23000' stop-opacity='0.45'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+  background-size: 360px 150px;
+  opacity: 0.7;
+}
+
+.brick-bg::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 15%, rgba(180,180,180,0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(0,0,0,0.35) 100%);
   pointer-events: none;
 }
 
@@ -198,34 +212,42 @@ body.lang-jp-active p {
 }
 
 .lang-toggle {
-  background: rgba(139, 0, 0, 0.15);
-  border: 1px solid #5a2020;
-  border-radius: 6px;
-  padding: 6px 12px;
+  background: rgba(139, 0, 0, 0.25);
+  border: 2px solid #8b3030;
+  border-radius: 8px;
+  padding: 8px 16px;
   cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: #c8b8b8;
-  transition: border-color 0.3s, background 0.3s;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e8d8d8;
+  transition: all 0.3s;
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-left: 12px;
+  gap: 8px;
+  margin-left: 16px;
+  box-shadow: 0 0 12px rgba(139, 0, 0, 0.2);
+  letter-spacing: 0.5px;
 }
 
 .lang-toggle:hover {
-  border-color: #e04040;
-  background: rgba(200, 0, 0, 0.15);
+  border-color: #ff4040;
+  background: rgba(200, 0, 0, 0.25);
+  box-shadow: 0 0 20px rgba(200, 0, 0, 0.35);
+  transform: translateY(-1px);
 }
 
 .lang-toggle .active-lang {
   color: #ff4040;
-  font-weight: 700;
-  text-shadow: 0 0 8px rgba(255, 64, 64, 0.3);
+  font-weight: 800;
+  text-shadow: 0 0 12px rgba(255, 64, 64, 0.5);
+  font-size: 0.85rem;
 }
 
 .lang-sep {
-  color: #5a3030;
+  color: #7a4040;
+  font-weight: 300;
+  opacity: 0.6;
 }
 
 /* Hero */

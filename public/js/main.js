@@ -100,72 +100,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Twinkling stars across the entire page
+// Brick parallax scroll
 (() => {
-  const container = document.getElementById('starsCanvas');
-  if (!container) return;
-
-  const canvas = document.createElement('canvas');
-  canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1';
-  container.appendChild(canvas);
-
-  const ctx = canvas.getContext('2d');
-  let w, h, stars = [];
-
-  const colors = [
-    '255, 60, 60',
-    '200, 50, 50',
-    '180, 80, 255',
-    '140, 60, 220',
-    '80, 140, 255',
-    '120, 180, 255',
-    '255, 100, 150'
-  ];
-
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-
-  function createStars() {
-    stars = [];
-    const count = Math.floor((w * h) / 4000);
-    for (let i = 0; i < count; i++) {
-      stars.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        r: Math.random() * 1.8 + 0.4,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        speed: Math.random() * 0.8 + 0.3,
-        phase: Math.random() * Math.PI * 2,
-        baseAlpha: Math.random() * 0.5 + 0.3
+  const brickBg = document.querySelector('.brick-bg');
+  if (!brickBg) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY * 0.15;
+        brickBg.style.backgroundPosition = '0 ' + y + 'px';
+        ticking = false;
       });
+      ticking = true;
     }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    const time = Date.now() / 1000;
-    stars.forEach(s => {
-      const glow = 0.5 + 0.5 * Math.sin(time * s.speed + s.phase);
-      const alpha = s.baseAlpha * glow;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${s.color}, ${alpha})`;
-      ctx.fill();
-
-      if (glow > 0.7) {
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r * 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${s.color}, ${alpha * 0.12})`;
-        ctx.fill();
-      }
-    });
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', () => { resize(); createStars(); });
-  resize();
-  createStars();
-  draw();
+  });
 })();
+
