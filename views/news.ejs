@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<section class="news-page-hero">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" data-en="Latest" data-tr="Son Haberler" data-jp="最新情報">Latest</span>
+      <h2 data-en="News & Updates" data-tr="Haberler & Güncellemeler" data-jp="ニュース＆アップデート">News & Updates</h2>
+      <p data-en="Follow the latest from GhostPath Studio." data-tr="GhostPath Studio'dan son gelişmeleri takip edin." data-jp="GhostPath Studioの最新情報をお届けします。">Follow the latest from GhostPath Studio.</p>
+    </div>
+    <% if (news.length === 0) { %>
+    <div class="news-empty">
+      <p data-en="No news yet. Check back soon!" data-tr="Henüz haber yok. Çok yakında göz atın!" data-jp="まだニュースはありません。また後でチェックしてください！">No news yet. Check back soon!</p>
+    </div>
+    <% } else { %>
+    <div class="news-scroll news-page-scroll">
+      <table class="news-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Tag</th>
+            <th data-en="Title" data-tr="Başlık" data-jp="タイトル">Title</th>
+            <th data-en="Description" data-tr="Açıklama" data-jp="説明">Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% news.forEach(item => { %>
+          <tr>
+            <td class="td-date"><%= item.date %></td>
+            <td><span class="news-tag"><%= item.tag %></span></td>
+            <td class="td-title" data-en="<%= item.titleEN %>" data-tr="<%= item.titleTR %>" data-jp="<%= item.titleJP %>"><%= item.titleEN %></td>
+            <td class="td-desc" data-en="<%= item.descEN %>" data-tr="<%= item.descTR %>" data-jp="<%= item.descJP %>"><%= item.descEN %></td>
+            <td><a href="#" class="news-link" data-en="Read →" data-tr="Oku →" data-jp="読む →">Read →</a></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+    <a href="/" class="back-link" data-en="← Back to Home" data-tr="← Ana Sayfaya Dön" data-jp="← ホームに戻る">← Back to Home</a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

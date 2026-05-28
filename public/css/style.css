@@ -991,6 +991,45 @@ section {
   font-style: italic;
 }
 
+/* ===== News ===== */
+
+/* Compact news section on home page */
+.news-section-compact {
+  padding: 100px 0;
+  position: relative;
+  background: rgba(3, 1, 5, 0.95);
+  text-align: center;
+}
+
+.news-card-link {
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+.btn-lg {
+  padding: 16px 48px;
+  font-size: 1rem;
+}
+
+/* Full news page */
+.news-page-hero {
+  padding: 140px 0 100px;
+  min-height: 80vh;
+}
+
+.news-page-scroll {
+  margin-bottom: 50px;
+}
+
+.news-empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
 /* ===== News Table ===== */
 .news {
   padding: 100px 0;

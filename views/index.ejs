@@ -87,36 +87,15 @@
 </section>
 
 <!-- News -->
-<section id="news" class="news">
+<section id="news" class="news-section-compact">
   <div class="container">
     <div class="section-header">
       <span class="section-tag" data-en="Latest" data-tr="Son Haberler" data-jp="最新情報">Latest</span>
       <h2 data-en="News & Updates" data-tr="Haberler & Güncellemeler" data-jp="ニュース＆アップデート">News & Updates</h2>
-      <p data-en="Follow the latest from GhostPath Studio." data-tr="GhostPath Studio'dan son gelişmeleri takip edin." data-jp="GhostPath Studioの最新情報をお届けします。">Follow the latest from GhostPath Studio.</p>
+      <p data-en="Stay up to date with the latest from GhostPath Studio." data-tr="GhostPath Studio'dan son gelişmelerden haberdar olun." data-jp="GhostPath Studioの最新情報をチェックしよう。">Stay up to date with the latest from GhostPath Studio.</p>
     </div>
-    <div class="news-scroll">
-      <table class="news-table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Tag</th>
-            <th data-en="Title" data-tr="Başlık" data-jp="タイトル">Title</th>
-            <th data-en="Description" data-tr="Açıklama" data-jp="説明">Description</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% news.forEach(item => { %>
-          <tr>
-            <td class="td-date"><%= item.date %></td>
-            <td><span class="news-tag"><%= item.tag %></span></td>
-            <td class="td-title" data-en="<%= item.titleEN %>" data-tr="<%= item.titleTR %>" data-jp="<%= item.titleJP %>"><%= item.titleEN %></td>
-            <td class="td-desc" data-en="<%= item.descEN %>" data-tr="<%= item.descTR %>" data-jp="<%= item.descJP %>"><%= item.descEN %></td>
-            <td><a href="#" class="news-link" data-en="Read →" data-tr="Oku →" data-jp="読む →">Read →</a></td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
+    <div class="news-card-link">
+      <a href="/news" class="btn btn-primary btn-lg" data-en="View News →" data-tr="Haberleri Görüntüle →" data-jp="ニュースを見る →">View News →</a>
     </div>
   </div>
 </section>

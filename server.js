@@ -58,6 +58,14 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/news', (req, res) => {
+  res.render('news', {
+    title: 'News & Updates — GhostPath Studio',
+    currentPage: 'news',
+    news
+  });
+});
+
 app.get('/games/:id', (req, res) => {
   const game = games.find(g => g.id === req.params.id);
   if (!game) return res.redirect('/');
