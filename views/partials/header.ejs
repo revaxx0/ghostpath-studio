@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
+  <link rel="icon" href="/images/NEWLOGO.jpg" type="image/jpeg">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="vignette"></div>
-  <div class="brick-bg"></div>
+  <div class="stars-canvas" id="starsCanvas"></div>
   <header class="header">
     <nav class="navbar">
       <a href="/" class="logo">
@@ -27,6 +28,10 @@
         <li><a href="#about" data-en="About" data-tr="Hakkında" data-jp="について">About</a></li>
         <li><a href="#contact" class="nav-cta" data-en="Contact" data-tr="İletişim" data-jp="お問い合わせ">Contact</a></li>
       </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon-dark">☽</span>
+        <span class="theme-icon-light" style="display:none">☀</span>
+      </button>
       <button class="lang-toggle" id="langToggle" aria-label="Switch language">
         <span class="lang-en active-lang">EN</span>
         <span class="lang-sep">|</span>
