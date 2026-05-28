@@ -42,12 +42,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Language switcher (EN / TR / JP)
-const langs = ['en', 'tr', 'jp'];
+// Language switcher (EN / TR / JP / RU)
+const langs = ['en', 'tr', 'jp', 'ru'];
 let currentLang = 'en';
 
-function setLang(lang) {
+function setLang(lang, persist) {
   currentLang = lang;
+  if (persist !== false) {
+    try { sessionStorage.setItem('ghostpath-lang', lang); } catch (e) {}
+  }
 
   // Update all data-* attributes
   document.querySelectorAll('[data-en]').forEach(el => {
@@ -75,12 +78,20 @@ function setLang(lang) {
   if (aboutEl) aboutEl.style.display = '';
 
   // Update toggle UI
-  document.querySelectorAll('.lang-en, .lang-tr, .lang-jp').forEach(el => el.classList.remove('active-lang'));
+  document.querySelectorAll('.lang-en, .lang-tr, .lang-jp, .lang-ru').forEach(el => el.classList.remove('active-lang'));
   document.querySelector('.lang-' + lang)?.classList.add('active-lang');
 
   // Apply JP font when Japanese selected
   document.body.classList.toggle('lang-jp-active', lang === 'jp');
 }
+
+// Restore language from sessionStorage on page load
+try {
+  const saved = sessionStorage.getItem('ghostpath-lang');
+  if (saved && langs.includes(saved)) {
+    setLang(saved, false);
+  }
+} catch (e) {}
 
 document.getElementById('langToggle')?.addEventListener('click', () => {
   const idx = langs.indexOf(currentLang);

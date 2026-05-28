@@ -3,7 +3,7 @@
 <!-- Game Hero -->
 <section class="game-detail-hero">
   <div class="container">
-    <a href="/#games" class="back-link" data-en="← Back to Games" data-tr="← Oyunlara Dön" data-jp="← ゲームに戻る">← Back to Games</a>
+    <a href="/#games" class="back-link" data-en="← Back to Games" data-tr="← Oyunlara Dön" data-jp="← ゲームに戻る" data-ru="← Назад к играм">← Back to Games</a>
     <div class="game-detail-layout">
       <div class="game-detail-image">
         <img src="<%= game.image %>" alt="<%= game.title %>">
@@ -15,16 +15,18 @@
           <span class="game-detail-status game-detail-status-en"><%= game.statusEN %></span>
           <span class="game-detail-status-tr" style="display:none"><%= game.statusTR %></span>
           <span class="game-detail-status-jp" style="display:none"><%= game.statusJP %></span>
-          <span class="game-detail-release" data-en="Release: " data-tr="Çıkış: " data-jp="リリース: ">Release: </span>
+          <span class="game-detail-status-ru" style="display:none"><%= game.statusRU %></span>
+          <span class="game-detail-release" data-en="Release: " data-tr="Çıkış: " data-jp="リリース: " data-ru="Релиз: ">Release: </span>
           <span><%= game.releaseDate %></span>
         </div>
         <p class="game-detail-desc-en"><%= game.fullDescEN %></p>
         <p class="game-detail-desc-tr" style="display:none"><%= game.fullDescTR %></p>
         <p class="game-detail-desc-jp" style="display:none"><%= game.fullDescJP %></p>
+        <p class="game-detail-desc-ru" style="display:none"><%= game.fullDescRU %></p>
         <div class="game-detail-actions">
           <a href="<%= game.trailer %>" class="btn btn-primary" target="_blank">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            <span data-en="Watch Trailer" data-tr="Fragmanı İzle" data-jp="予告編を見る">Watch Trailer</span>
+            <span data-en="Watch Trailer" data-tr="Fragmanı İzle" data-jp="予告編を見る" data-ru="Смотреть трейлер">Watch Trailer</span>
           </a>
         </div>
       </div>
@@ -36,8 +38,8 @@
 <section class="game-detail-gallery">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag" data-en="Media" data-tr="Medya" data-jp="メディア">Media</span>
-      <h2 data-en="Screenshots" data-tr="Ekran Görüntüleri" data-jp="スクリーンショット">Screenshots</h2>
+      <span class="section-tag" data-en="Media" data-tr="Medya" data-jp="メディア" data-ru="Медиа">Media</span>
+      <h2 data-en="Screenshots" data-tr="Ekran Görüntüleri" data-jp="スクリーンショット" data-ru="Скриншоты">Screenshots</h2>
     </div>
     <div class="gallery-grid">
       <% game.gallery.forEach(img => { %>

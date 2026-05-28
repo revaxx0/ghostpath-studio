@@ -6,13 +6,13 @@
   <div class="noise-overlay"></div>
   <div class="container">
     <div class="hero-content">
-      <span class="hero-badge" data-en="✦ Indie Horror Studio" data-tr="✦ Bağımsız Korku Stüdyosu" data-jp="✦ インディーホラー">✦ Indie Horror Studio</span>
-      <h1><span data-en="Don&rsquo;t follow the path" data-tr="Yolu takip etme" data-jp="道を追うな">Don&rsquo;t follow the path</span><br><span class="gradient-text" data-en="let it find you." data-tr="bırak yol seni bulsun." data-jp="道に追われろ。">let it find you.</span></h1>
-      <p data-en="We craft atmospheric horror experiences that linger long after you&rsquo;ve looked away." data-tr="Baktıktan sonra bile uzun süre aklınızdan çıkmayacak atmosferik korku deneyimleri yaratıyoruz." data-jp="目をそらした後も長く心に残る、空気のようなホラー体験を創造します。">We craft atmospheric horror experiences that linger long after you&rsquo;ve looked away.</p>
+      <span class="hero-badge" data-en="✦ Indie Horror Studio" data-tr="✦ Bağımsız Korku Stüdyosu" data-jp="✦ インディーホラー" data-ru="✦ Инди-студия хорроров">✦ Indie Horror Studio</span>
+      <h1><span data-en="Don&rsquo;t follow the path" data-tr="Yolu takip etme" data-jp="道を追うな" data-ru="Не следуй за путём">Don&rsquo;t follow the path</span><br><span class="gradient-text" data-en="let it find you." data-tr="bırak yol seni bulsun." data-jp="道に追われろ。" data-ru="позволь пути найти тебя.">let it find you.</span></h1>
+      <p data-en="We craft atmospheric horror experiences that linger long after you&rsquo;ve looked away." data-tr="Baktıktan sonra bile uzun süre aklınızdan çıkmayacak atmosferik korku deneyimleri yaratıyoruz." data-jp="目をそらした後も長く心に残る、空気のようなホラー体験を創造します。" data-ru="Мы создаём атмосферные хорроры, которые остаются с вами ещё долго после того, как вы отвели взгляд.">We craft atmospheric horror experiences that linger long after you&rsquo;ve looked away.</p>
       <div class="hero-actions">
-        <a href="#games" class="btn btn-primary" data-en="Our Games" data-tr="Oyunlarımız" data-jp="ゲームを見る">Our Games</a>
-        <a href="#founders" class="btn btn-outline" data-en="Our Team" data-tr="Ekibimiz" data-jp="チーム紹介">Our Team</a>
-        <a href="https://ghostpath.itch.io" target="_blank" class="btn btn-outline" data-en="Itch.io →" data-tr="Itch.io →" data-jp="Itch.io →">Itch.io →</a>
+        <a href="#games" class="btn btn-primary" data-en="Our Games" data-tr="Oyunlarımız" data-jp="ゲームを見る" data-ru="Наши игры">Our Games</a>
+        <a href="#founders" class="btn btn-outline" data-en="Our Team" data-tr="Ekibimiz" data-jp="チーム紹介" data-ru="Наша команда">Our Team</a>
+        <a href="https://ghostpath.itch.io" target="_blank" class="btn btn-outline" data-en="Itch.io →" data-tr="Itch.io →" data-jp="Itch.io →" data-ru="Itch.io →">Itch.io →</a>
       </div>
     </div>
   </div>
@@ -22,9 +22,9 @@
 <section id="games" class="games">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag" data-en="Our Projects" data-tr="Projelerimiz" data-jp="プロジェクト">Our Projects</span>
-      <h2 data-en="Games" data-tr="Oyunlar" data-jp="ゲーム">Games</h2>
-      <p data-en="Every project is a doorway into another world. Enter if you dare." data-tr="Her proje başka bir dünyaya açılan bir kapı. Cesaretin varsa gir." data-jp="どのプロジェクトも異世界への扉。勇気があるなら、どうぞ。">Every project is a doorway into another world. Enter if you dare.</p>
+      <span class="section-tag" data-en="Our Projects" data-tr="Projelerimiz" data-jp="プロジェクト" data-ru="Наши проекты">Our Projects</span>
+      <h2 data-en="Games" data-tr="Oyunlar" data-jp="ゲーム" data-ru="Игры">Games</h2>
+      <p data-en="Every project is a doorway into another world. Enter if you dare." data-tr="Her proje başka bir dünyaya açılan bir kapı. Cesaretin varsa gir." data-jp="どのプロジェクトも異世界への扉。勇気があるなら、どうぞ。" data-ru="Каждый проект — это дверь в другой мир. Войди, если осмелишься.">Every project is a doorway into another world. Enter if you dare.</p>
     </div>
     <div class="games-grid">
       <% games.forEach(game => { %>
@@ -34,7 +34,7 @@
           <div class="game-overlay">
             <a href="<%= game.trailer %>" class="btn-trailer" target="_blank">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              <span data-en="Watch Trailer" data-tr="Fragmanı İzle" data-jp="予告編を見る">Watch Trailer</span>
+              <span data-en="Watch Trailer" data-tr="Fragmanı İzle" data-jp="予告編を見る" data-ru="Смотреть трейлер">Watch Trailer</span>
             </a>
           </div>
         </div>
@@ -44,10 +44,12 @@
           <p class="game-desc-en"><%= game.descEN %></p>
           <p class="game-desc-tr" style="display:none"><%= game.descTR %></p>
           <p class="game-desc-jp" style="display:none"><%= game.descJP %></p>
+          <p class="game-desc-ru" style="display:none"><%= game.descRU %></p>
           <span class="game-status game-status-en"><%= game.statusEN %></span>
           <span class="game-status-tr" style="display:none"><%= game.statusTR %></span>
           <span class="game-status-jp" style="display:none"><%= game.statusJP %></span>
-          <a href="/games/<%= game.id %>" class="btn-readmore" data-en="Learn More →" data-tr="Daha Fazla →" data-jp="詳細 →">Learn More →</a>
+          <span class="game-status-ru" style="display:none"><%= game.statusRU %></span>
+          <a href="/games/<%= game.id %>" class="btn-readmore" data-en="Learn More →" data-tr="Daha Fazla →" data-jp="詳細 →" data-ru="Подробнее →">Learn More →</a>
         </div>
       </div>
       <% }) %>
@@ -59,9 +61,9 @@
 <section id="founders" class="founders">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag" data-en="The Minds Behind It" data-tr="Arkasındaki Zihinler" data-jp="創設者">The Minds Behind It</span>
-      <h2 data-en="Founders" data-tr="Kurucular" data-jp="創設者">Founders</h2>
-      <p data-en="The two pillars of GhostPath Studio." data-tr="GhostPath Studio'nun iki temel direği." data-jp="GhostPath Studioの二本の柱。">The two pillars of GhostPath Studio.</p>
+      <span class="section-tag" data-en="The Minds Behind It" data-tr="Arkasındaki Zihinler" data-jp="創設者" data-ru="Создатели">The Minds Behind It</span>
+      <h2 data-en="Founders" data-tr="Kurucular" data-jp="創設者" data-ru="Основатели">Founders</h2>
+      <p data-en="The two pillars of GhostPath Studio." data-tr="GhostPath Studio'nun iki temel direği." data-jp="GhostPath Studioの二本の柱。" data-ru="Две опоры GhostPath Studio.">The two pillars of GhostPath Studio.</p>
     </div>
     <div class="founders-grid">
       <div class="founder-card">
@@ -71,7 +73,7 @@
           <span class="role-badge">🎨 Model Designer</span>
           <span class="role-badge">🗺️ Map Designer</span>
         </div>
-        <p data-en="The architect of our worlds — crafting every model and map with painstaking detail." data-tr="Dünyalarımızın mimarı — her modeli ve haritayı titizlikle işliyor." data-jp="世界の設計者 — 細部までこだわり抜いたモデルとマップを制作。">The architect of our worlds — crafting every model and map with painstaking detail.</p>
+        <p data-en="The architect of our worlds — crafting every model and map with painstaking detail." data-tr="Dünyalarımızın mimarı — her modeli ve haritayı titizlikle işliyor." data-jp="世界の設計者 — 細部までこだわり抜いたモデルとマップを制作。" data-ru="Архитектор наших миров — создаёт каждую модель и карту с кропотливой детализацией.">The architect of our worlds — crafting every model and map with painstaking detail.</p>
       </div>
       <div class="founder-card">
         <div class="founder-avatar revaxx"></div>
@@ -81,7 +83,7 @@
           <span class="role-badge">💻 Developer</span>
           <span class="role-badge">📖 Game Writer</span>
         </div>
-        <p data-en="The mind behind the code and the stories — bringing nightmares to life." data-tr="Kodların ve hikayelerin arkasındaki zihin — kabusları hayata geçiriyor." data-jp="コードと物語の背後にある精神 — 悪夢を現実に。">The mind behind the code and the stories — bringing nightmares to life.</p>
+        <p data-en="The mind behind the code and the stories — bringing nightmares to life." data-tr="Kodların ve hikayelerin arkasındaki zihin — kabusları hayata geçiriyor." data-jp="コードと物語の背後にある精神 — 悪夢を現実に。" data-ru="Разум, стоящий за кодом и историями — воплощающий кошмары в реальность.">The mind behind the code and the stories — bringing nightmares to life.</p>
       </div>
     </div>
   </div>
@@ -91,12 +93,12 @@
 <section id="news" class="news-section-compact">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag" data-en="Latest" data-tr="Son Haberler" data-jp="最新情報">Latest</span>
-      <h2 data-en="News & Updates" data-tr="Haberler & Güncellemeler" data-jp="ニュース＆アップデート">News & Updates</h2>
-      <p data-en="Stay up to date with the latest from GhostPath Studio." data-tr="GhostPath Studio'dan son gelişmelerden haberdar olun." data-jp="GhostPath Studioの最新情報をチェックしよう。">Stay up to date with the latest from GhostPath Studio.</p>
+      <span class="section-tag" data-en="Latest" data-tr="Son Haberler" data-jp="最新情報" data-ru="Последнее">Latest</span>
+      <h2 data-en="News & Updates" data-tr="Haberler & Güncellemeler" data-jp="ニュース＆アップデート" data-ru="Новости и обновления">News & Updates</h2>
+      <p data-en="Stay up to date with the latest from GhostPath Studio." data-tr="GhostPath Studio'dan son gelişmelerden haberdar olun." data-jp="GhostPath Studioの最新情報をチェックしよう。" data-ru="Будьте в курсе последних новостей GhostPath Studio.">Stay up to date with the latest from GhostPath Studio.</p>
     </div>
     <div class="news-card-link">
-      <a href="/news" class="btn btn-primary btn-lg" data-en="View News →" data-tr="Haberleri Görüntüle →" data-jp="ニュースを見る →">View News →</a>
+      <a href="/news" class="btn btn-primary btn-lg" data-en="View News →" data-tr="Haberleri Görüntüle →" data-jp="ニュースを見る →" data-ru="Смотреть новости →">View News →</a>
     </div>
   </div>
 </section>
@@ -106,8 +108,8 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-content">
-        <span class="section-tag" data-en="About Us" data-tr="Hakkımızda" data-jp="私たちについて">About Us</span>
-        <h2 data-en="Who We Are" data-tr="Biz Kimiz" data-jp="私たちは">Who We Are</h2>
+        <span class="section-tag" data-en="About Us" data-tr="Hakkımızda" data-jp="私たちについて" data-ru="О нас">About Us</span>
+        <h2 data-en="Who We Are" data-tr="Biz Kimiz" data-jp="私たちは" data-ru="Кто мы">Who We Are</h2>
         <div class="about-text-en">
           <p>We're a small indie horror game team from Türkiye, passionate about crafting unsettling and atmospheric experiences. GhostPath Studio focuses on creating stories that blend fear, mystery, and emotion — where every sound and shadow matters.</p>
           <p>Our goal isn't perfection — it's immersion. We experiment, learn, and evolve with every project we make. Feedback and honest criticism are always welcome — that's how we grow.</p>
@@ -120,33 +122,37 @@
           <p>私たちはトルコの小さなインディーホラーゲームチームです。不安で幻想的な体験を創り出すことに情熱を注いでいます。GhostPath Studioは、恐怖、謎、感情が融合した物語を紡ぎます — すべての音と影に意味がある世界。</p>
           <p>私たちの目標は完璧さではありません — 没入感です。プロジェクトごとに実験し、学び、進化し続けます。フィードバックと正直な批評はいつでも歓迎します — それが成長の糧です。</p>
         </div>
+        <div class="about-text-ru" style="display:none">
+          <p>Мы — небольшая инди-команда разработчиков хорроров из Турции, увлечённая созданием тревожных и атмосферных игр. GhostPath Studio фокусируется на историях, в которых переплетаются страх, тайна и эмоции — где каждый звук и каждая тень имеют значение.</p>
+          <p>Наша цель — не совершенство, а погружение. Мы экспериментируем, учимся и развиваемся с каждым проектом. Обратная связь и честная критика всегда приветствуются — так мы растем.</p>
+        </div>
         <div class="about-values">
           <div class="value-item">
             <span class="value-icon">👁️</span>
-            <span data-en="Story-driven horror" data-tr="Hikaye odaklı korku" data-jp="ストーリー重視のホラー">Story-driven horror</span>
+            <span data-en="Story-driven horror" data-tr="Hikaye odaklı korku" data-jp="ストーリー重視のホラー" data-ru="Сюжетный хоррор">Story-driven horror</span>
           </div>
           <div class="value-item">
             <span class="value-icon">🌫️</span>
-            <span data-en="Psychological tension & atmosphere" data-tr="Psikolojik gerilim ve atmosfer" data-jp="心理的緊張と雰囲気">Psychological tension & atmosphere</span>
+            <span data-en="Psychological tension & atmosphere" data-tr="Psikolojik gerilim ve atmosfer" data-jp="心理的緊張と雰囲気" data-ru="Психологическое напряжение и атмосфера">Psychological tension & atmosphere</span>
           </div>
           <div class="value-item">
             <span class="value-icon">📜</span>
-            <span data-en="Experimental narrative" data-tr="Deneysel anlatı" data-jp="実験的な物語">Experimental narrative</span>
+            <span data-en="Experimental narrative" data-tr="Deneysel anlatı" data-jp="実験的な物語" data-ru="Экспериментальное повествование">Experimental narrative</span>
           </div>
         </div>
       </div>
       <div class="about-stats">
         <div class="stat">
           <span class="stat-number">2</span>
-          <span class="stat-label" data-en="Games in Development" data-tr="Geliştirme Aşamasında" data-jp="開発中のゲーム">Games in Development</span>
+          <span class="stat-label" data-en="Games in Development" data-tr="Geliştirme Aşamasında" data-jp="開発中のゲーム" data-ru="Игр в разработке">Games in Development</span>
         </div>
         <div class="stat">
           <span class="stat-number">2024</span>
-          <span class="stat-label" data-en="Founded" data-tr="Kuruluş" data-jp="設立">Founded</span>
+          <span class="stat-label" data-en="Founded" data-tr="Kuruluş" data-jp="設立" data-ru="Основана">Founded</span>
         </div>
         <div class="stat">
           <span class="stat-number">∞</span>
-          <span class="stat-label" data-en="Ideas to Explore" data-tr="Keşfedilecek Fikir" data-jp="探求すべきアイデア">Ideas to Explore</span>
+          <span class="stat-label" data-en="Ideas to Explore" data-tr="Keşfedilecek Fikir" data-jp="探求すべきアイデア" data-ru="Идей для изучения">Ideas to Explore</span>
         </div>
       </div>
     </div>
@@ -157,15 +163,15 @@
 <section id="contact" class="contact">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag" data-en="Get in Touch" data-tr="İletişim" data-jp="お問い合わせ">Get in Touch</span>
-      <h2 data-en="Reach Out" data-tr="Bize Ulaşın" data-jp="お問い合わせ">Reach Out</h2>
-      <p data-en="Questions, feedback, or just want to say hi — we&rsquo;d love to hear from you." data-tr="Sorular, geri bildirim veya sadece merhaba demek için — sizden haber almayı çok isteriz." data-jp="ご質問、フィードバック、ご挨拶など — お気軽にお聞かせください。">Questions, feedback, or just want to say hi — we&rsquo;d love to hear from you.</p>
+      <span class="section-tag" data-en="Get in Touch" data-tr="İletişim" data-jp="お問い合わせ" data-ru="Свяжитесь с нами">Get in Touch</span>
+      <h2 data-en="Reach Out" data-tr="Bize Ulaşın" data-jp="お問い合わせ" data-ru="Напишите нам">Reach Out</h2>
+      <p data-en="Questions, feedback, or just want to say hi — we&rsquo;d love to hear from you." data-tr="Sorular, geri bildirim veya sadece merhaba demek için — sizden haber almayı çok isteriz." data-jp="ご質問、フィードバック、ご挨拶など — お気軽にお聞かせください。" data-ru="Вопросы, отзывы или просто хотите поздороваться — мы будем рады услышать вас.">Questions, feedback, or just want to say hi — we&rsquo;d love to hear from you.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info">
         <div class="contact-card">
           <span class="contact-icon">📧</span>
-          <h4 data-en="Email" data-tr="E-posta" data-jp="メール">Email</h4>
+          <h4 data-en="Email" data-tr="E-posta" data-jp="メール" data-ru="Email">Email</h4>
           <a href="mailto:ghostpath61@gmail.com">ghostpath61@gmail.com</a>
         </div>
         <div class="contact-card">
