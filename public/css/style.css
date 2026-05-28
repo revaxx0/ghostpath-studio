@@ -472,11 +472,6 @@ section {
   color: #ff6060;
 }
 
-.btn-outline:hover {
-  border-color: #5a3030;
-  color: #8a6a6a;
-}
-
 /* Section defaults */
 section {
   padding: 100px 0;
@@ -1208,46 +1203,71 @@ section {
   display: block;
 }
 
-/* Mobile */
+/* ===== Mobile Responsive ===== */
+
+/* Tablet and below */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 10px 16px;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  .nav-links a {
+    font-size: 0.72rem;
+  }
+
+  .nav-cta {
+    padding: 5px 12px;
+    font-size: 0.72rem;
+  }
+
+  .lang-toggle {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    gap: 5px;
+    margin-left: 8px;
+  }
+
+  .theme-toggle {
+    padding: 5px 8px;
+    font-size: 0.85rem;
+    margin-left: 4px;
+  }
+
+  section {
+    padding: 70px 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
   .games-grid {
     grid-template-columns: 1fr;
   }
 
-  .founders-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
   .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .nav-links {
-    gap: 14px;
-  }
-
-  .nav-links a {
-    font-size: 0.78rem;
-  }
-
-  .nav-cta {
-    padding: 6px 14px;
-    font-size: 0.78rem;
+    font-size: 2rem;
   }
 
   .founders-grid {
+    grid-template-columns: 1fr;
     max-width: 400px;
   }
 
   .about-grid {
+    grid-template-columns: 1fr;
     gap: 40px;
   }
 
@@ -1257,15 +1277,16 @@ section {
 
   .contact-info {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
-  .news-scroll {
-    border-radius: 8px;
+  .contact-card {
+    padding: 20px 12px;
   }
 
   .news-table {
-    font-size: 0.8rem;
-    min-width: 550px;
+    font-size: 0.78rem;
+    min-width: 500px;
   }
 
   .news-table th,
@@ -1276,6 +1297,10 @@ section {
   .td-title {
     font-size: 0.82rem;
     min-width: 140px;
+  }
+
+  .news-scroll {
+    border-radius: 8px;
   }
 
   .footer-grid {
@@ -1289,6 +1314,10 @@ section {
 
   .footer-social {
     justify-content: center;
+  }
+
+  .game-detail-hero {
+    padding: 120px 0 40px;
   }
 
   .game-detail-layout {
@@ -1305,7 +1334,76 @@ section {
   }
 }
 
+/* Phone */
 @media (max-width: 480px) {
+  .navbar {
+    padding: 8px 12px;
+  }
+
+  .logo-img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .logo {
+    gap: 0;
+    margin-left: 0;
+    font-size: 0;
+  }
+
+  .nav-links {
+    gap: 6px;
+  }
+
+  .nav-links a {
+    font-size: 0.65rem;
+    letter-spacing: 0;
+  }
+
+  .nav-cta {
+    padding: 4px 10px;
+    font-size: 0.65rem;
+  }
+
+  .lang-toggle {
+    padding: 4px 8px;
+    font-size: 0.6rem;
+    gap: 3px;
+    margin-left: 4px;
+    border-width: 1px;
+  }
+
+  .lang-toggle .active-lang {
+    font-size: 0.7rem;
+  }
+
+  .theme-toggle {
+    padding: 4px 6px;
+    font-size: 0.75rem;
+    margin-left: 2px;
+  }
+
+  section {
+    padding: 50px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero {
+    min-height: 92vh;
+    padding-top: 70px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.7rem;
+  }
+
+  .hero-content p {
+    font-size: 0.85rem;
+  }
+
   .hero-actions {
     flex-direction: column;
   }
@@ -1313,13 +1411,171 @@ section {
   .hero-actions .btn {
     width: 100%;
     justify-content: center;
+    padding: 12px 24px;
+    font-size: 0.8rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .game-image {
+    height: 180px;
+  }
+
+  .game-info {
+    padding: 18px;
+  }
+
+  .game-info h3 {
+    font-size: 1rem;
+  }
+
+  .founder-card {
+    padding: 28px 20px;
+  }
+
+  .founder-card h3 {
+    font-size: 1rem;
   }
 
   .about-stats {
     grid-template-columns: 1fr;
   }
 
+  .stat {
+    padding: 20px 16px;
+  }
+
+  .contact-info {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .contact-card {
+    padding: 16px 10px;
+  }
+
+  .contact-card a {
+    font-size: 0.65rem;
+    word-break: break-word;
+  }
+
+  .news-table {
+    font-size: 0.72rem;
+    min-width: 420px;
+  }
+
+  .news-table th,
+  .news-table td {
+    padding: 8px 10px;
+  }
+
+  .td-date {
+    font-size: 0.65rem;
+    width: 80px;
+  }
+
+  .td-title {
+    font-size: 0.75rem;
+    min-width: 120px;
+  }
+
+  .td-desc {
+    font-size: 0.7rem;
+  }
+
+  .footer {
+    padding: 40px 0 24px;
+  }
+
+  .game-detail-hero {
+    padding: 100px 0 30px;
+  }
+
+  .game-detail-info h1 {
+    font-size: 1.5rem;
+  }
+
+  .game-detail-meta {
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.7rem;
+  }
+
+  .game-detail-actions {
+    flex-direction: column;
+  }
+
+  .game-detail-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .gallery-item img {
+    height: 180px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .navbar {
+    padding: 6px 10px;
+  }
+
+  .nav-links {
+    gap: 4px;
+  }
+
+  .nav-links a {
+    font-size: 0.58rem;
+  }
+
+  .nav-cta {
+    padding: 3px 8px;
+    font-size: 0.58rem;
+  }
+
+  .lang-toggle {
+    padding: 3px 6px;
+    font-size: 0.55rem;
+  }
+
+  .lang-toggle .active-lang {
+    font-size: 0.6rem;
+  }
+
+  .theme-toggle {
+    padding: 3px 5px;
+    font-size: 0.7rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-badge {
+    font-size: 0.6rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.75rem;
+  }
+
   .contact-info {
     grid-template-columns: 1fr;
+  }
+
+  .founder-card {
+    padding: 24px 16px;
+  }
+
+  .game-image {
+    height: 160px;
+  }
+
+  .game-detail-hero {
+    padding: 90px 0 20px;
   }
 }
