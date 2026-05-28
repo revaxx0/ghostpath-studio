@@ -279,11 +279,10 @@ body.lang-jp-active p {
 }
 
 .lang-toggle {
-  background: rgba(139, 0, 0, 0.25);
-  border: 2px solid #8b3030;
+  background: rgba(139, 0, 0, 0.35);
+  border: 2px solid #b04040;
   border-radius: 8px;
-  padding: 8px 16px;
-  cursor: pointer;
+  padding: 6px 10px;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 600;
@@ -291,17 +290,37 @@ body.lang-jp-active p {
   transition: all 0.3s;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   margin-left: 16px;
-  box-shadow: 0 0 12px rgba(139, 0, 0, 0.2);
+  box-shadow: 0 0 16px rgba(180, 0, 0, 0.3);
   letter-spacing: 0.5px;
 }
 
 .lang-toggle:hover {
-  border-color: #ff4040;
-  background: rgba(200, 0, 0, 0.25);
-  box-shadow: 0 0 20px rgba(200, 0, 0, 0.35);
-  transform: translateY(-1px);
+  border-color: #ff6060;
+  background: rgba(200, 0, 0, 0.35);
+  box-shadow: 0 0 28px rgba(220, 0, 0, 0.45);
+}
+
+.lang-item {
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: all 0.25s;
+  color: #b09090;
+}
+
+.lang-item:hover {
+  color: #ff9090;
+  background: rgba(200, 0, 0, 0.15);
+}
+
+.lang-item.active-lang {
+  color: #ff4040;
+  font-weight: 800;
+  text-shadow: 0 0 12px rgba(255, 64, 64, 0.5);
+  font-size: 0.85rem;
+  background: rgba(200, 0, 0, 0.2);
 }
 
 /* Theme toggle */
@@ -330,13 +349,6 @@ body.lang-jp-active p {
   background: rgba(139, 0, 0, 0.1);
   border-color: #c0a8a0;
   color: #5a2020;
-}
-
-.lang-toggle .active-lang {
-  color: #ff4040;
-  font-weight: 800;
-  text-shadow: 0 0 12px rgba(255, 64, 64, 0.5);
-  font-size: 0.85rem;
 }
 
 .lang-sep {
@@ -1321,10 +1333,14 @@ section {
   }
 
   .lang-toggle {
-    padding: 6px 10px;
+    padding: 5px 8px;
     font-size: 0.7rem;
-    gap: 5px;
+    gap: 4px;
     margin-left: 8px;
+  }
+
+  .lang-item {
+    padding: 2px 6px;
   }
 
   .theme-toggle {
@@ -1465,7 +1481,11 @@ section {
     border-width: 1px;
   }
 
-  .lang-toggle .active-lang {
+  .lang-item {
+    padding: 2px 5px;
+  }
+
+  .lang-item.active-lang {
     font-size: 0.7rem;
   }
 
@@ -1637,13 +1657,12 @@ section {
     font-size: 0.55rem;
   }
 
-  .lang-toggle .active-lang {
-    font-size: 0.6rem;
+  .lang-item {
+    padding: 1px 4px;
   }
 
-  .theme-toggle {
-    padding: 3px 5px;
-    font-size: 0.7rem;
+  .lang-item.active-lang {
+    font-size: 0.6rem;
   }
 
   .hero-content h1 {

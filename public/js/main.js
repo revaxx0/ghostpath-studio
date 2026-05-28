@@ -93,10 +93,8 @@ try {
   }
 } catch (e) {}
 
-document.getElementById('langToggle')?.addEventListener('click', () => {
-  const idx = langs.indexOf(currentLang);
-  const next = langs[(idx + 1) % langs.length];
-  setLang(next);
+document.querySelectorAll('.lang-item').forEach(el => {
+  el.addEventListener('click', () => setLang(el.dataset.lang));
 });
 
 // Interactive sounds
