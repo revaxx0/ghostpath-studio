@@ -443,6 +443,34 @@ section {
   flex-wrap: wrap;
 }
 
+.hero-social {
+  display: flex;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.hero-social-link {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139, 0, 0, 0.12);
+  border: 1px solid #5a3030;
+  border-radius: 8px;
+  color: #c0a8a8;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.hero-social-link:hover {
+  background: rgba(200, 0, 0, 0.2);
+  border-color: #e04040;
+  color: #ff6060;
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(200, 0, 0, 0.3);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -1525,6 +1553,17 @@ section {
     justify-content: center;
     padding: 12px 24px;
     font-size: 0.8rem;
+  }
+
+  .hero-social {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  .hero-social-link {
+    width: 40px;
+    height: 40px;
   }
 
   .section-header h2 {
