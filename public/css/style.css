@@ -389,9 +389,9 @@ section {
 
 .hero-badge {
   display: inline-block;
-  padding: 6px 16px;
-  background: rgba(92, 0, 0, 0.08);
-  border: 1px solid rgba(92, 0, 0, 0.15);
+  padding: 6px 18px;
+  background: rgba(92, 0, 0, 0.1);
+  border: 2px solid rgba(160, 40, 40, 0.4);
   border-radius: 20px;
   font-size: 0.7rem;
   color: var(--text-secondary);
@@ -399,6 +399,12 @@ section {
   font-weight: 600;
   letter-spacing: 1.5px;
   font-family: var(--font-mono);
+  box-shadow: 0 0 18px rgba(139, 0, 0, 0.15), inset 0 0 8px rgba(139, 0, 0, 0.05);
+}
+
+.badge-star {
+  color: #e04040;
+  margin-right: 4px;
 }
 
 .hero-content h1 {
