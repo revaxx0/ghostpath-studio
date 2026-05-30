@@ -57,7 +57,7 @@ const news = [];
 
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'GhostPath Studio — Indie Horror Game Studio',
+    title: 'GhostPath Studio — Indie Game Studio',
     currentPage: 'home',
     games,
     news

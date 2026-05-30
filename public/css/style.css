@@ -713,8 +713,12 @@ section {
   border-color: rgba(92, 0, 0, 0.3);
 }
 
+.founder-avatar {
+  background: #050308;
+}
+
 .founder-avatar::after {
-  content: '����';
+  content: '';
   position: absolute;
   inset: 0;
   display: flex;
