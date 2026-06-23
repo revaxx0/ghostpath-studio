@@ -1214,6 +1214,10 @@ section {
   align-items: center;
 }
 
+.game-detail-layout--noimg {
+  grid-template-columns: 1fr;
+}
+
 .game-detail-image img {
   width: 100%;
   border-radius: 12px;

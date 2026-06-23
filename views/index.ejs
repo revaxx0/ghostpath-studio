@@ -49,6 +49,7 @@
     <div class="games-grid">
       <% games.forEach(game => { %>
       <div class="game-card">
+        <% if (game.image) { %>
         <div class="game-image">
           <img src="<%= game.image %>" alt="<%= game.title %>" loading="lazy">
           <div class="game-overlay">
@@ -58,6 +59,7 @@
             </a>
           </div>
         </div>
+        <% } %>
         <div class="game-info">
           <span class="game-tag"><%= game.tag %></span>
           <h3><%= game.title %></h3>

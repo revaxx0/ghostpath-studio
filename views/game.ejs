@@ -4,10 +4,12 @@
 <section class="game-detail-hero">
   <div class="container">
     <a href="/#games" class="back-link" data-en="← Back to Games" data-tr="← Oyunlara Dön" data-jp="← ゲームに戻る" data-ru="← Назад к играм">← Back to Games</a>
-    <div class="game-detail-layout">
+    <div class="game-detail-layout<%= !game.image ? ' game-detail-layout--noimg' : '' %>">
+      <% if (game.image) { %>
       <div class="game-detail-image">
         <img src="<%= game.image %>" alt="<%= game.title %>">
       </div>
+      <% } %>
       <div class="game-detail-info">
         <span class="game-tag"><%= game.tag %></span>
         <h1><%= game.title %></h1>
@@ -34,6 +36,7 @@
   </div>
 </section>
 
+<% if (game.gallery && game.gallery.length > 0) { %>
 <!-- Gallery -->
 <section class="game-detail-gallery">
   <div class="container">
@@ -50,6 +53,7 @@
     </div>
   </div>
 </section>
+<% } %>
 
 <div class="lightbox-overlay" id="lightbox">
   <span class="lightbox-close">&times;</span>
