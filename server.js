@@ -53,7 +53,7 @@ const games = [
   },
   {
     id: 'dead-signal',
-    title: 'Dead Signal',
+    title: 'True Terrors: Dead Signal',
     tag: 'Horror',
     descEN: 'Coming soon.',
     descTR: 'Çok yakında.',
