@@ -71,6 +71,27 @@ const games = [
     statusTR: 'Çok Yakında',
     statusJP: '近日公開',
     statusRU: 'Скоро'
+  },
+  {
+    id: 'spectra',
+    title: 'Spectra',
+    tag: 'Horror',
+    descEN: 'Coming soon.',
+    descTR: 'Çok yakında.',
+    descJP: '近日公開。',
+    descRU: 'Скоро.',
+    fullDescEN: 'Coming soon.',
+    fullDescTR: 'Çok yakında.',
+    fullDescJP: '近日公開。',
+    fullDescRU: 'Скоро.',
+    releaseDate: 'TBA',
+    image: '/images/GhostPath.jpg',
+    gallery: ['/images/GhostPath.jpg'],
+    trailer: 'https://www.youtube.com/watch?v=',
+    statusEN: 'Coming Soon',
+    statusTR: 'Çok Yakında',
+    statusJP: '近日公開',
+    statusRU: 'Скоро'
   }
 ];
 
