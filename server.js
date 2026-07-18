@@ -31,8 +31,8 @@ const games = [
     statusRU: 'Скоро'
   },
   {
-    id: 'spectra',
-    title: 'Spectra',
+    id: 'mawbound',
+    title: 'Mawbound',
     tag: 'Horror',
     descEN: 'Coming soon.',
     descTR: 'Çok yakında.',
