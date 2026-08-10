@@ -637,6 +637,36 @@ section:not(.hero).visible {
   filter: drop-shadow(0 30px 55px rgba(0, 0, 0, 0.55));
 }
 
+.crt-ghost {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  width: min(500px, 88vw);
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 18px rgba(255, 90, 60, 0.35)) drop-shadow(0 8px 22px rgba(0, 0, 0, 0.55));
+  transition: opacity 0.4s ease, filter 0.4s ease;
+  animation: ghostBob 6s ease-in-out infinite;
+}
+
+.crt-ghost img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes ghostBob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-9px); }
+}
+
+.crt-tv:hover .crt-ghost {
+  opacity: 1;
+  filter: drop-shadow(0 0 26px rgba(255, 90, 60, 0.55)) drop-shadow(0 8px 22px rgba(0, 0, 0, 0.55));
+}
+
 .crt-antennas {
   position: absolute;
   top: -60px;
