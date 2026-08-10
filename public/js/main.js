@@ -52,7 +52,6 @@ function setLang(lang, persist) {
     try { sessionStorage.setItem('ghostpath-lang', lang); } catch (e) {}
   }
 
-  // Update all data-* attributes
   document.querySelectorAll('[data-en]').forEach(el => {
     const val = el.dataset[lang];
     if (val) {
@@ -60,7 +59,6 @@ function setLang(lang, persist) {
     }
   });
 
-  // Toggle game description/status
   ['game-desc', 'game-status', 'game-detail-desc', 'game-detail-status'].forEach(cls => {
     document.querySelectorAll('[class*="' + cls + '-"]').forEach(el => {
       el.style.display = 'none';
@@ -70,22 +68,18 @@ function setLang(lang, persist) {
     });
   });
 
-  // Toggle about text blocks
   document.querySelectorAll('[class^="about-text-"]').forEach(el => {
     el.style.display = 'none';
   });
   const aboutEl = document.querySelector('.about-text-' + lang);
   if (aboutEl) aboutEl.style.display = '';
 
-  // Update toggle UI
   document.querySelectorAll('.lang-en, .lang-tr, .lang-jp, .lang-ru').forEach(el => el.classList.remove('active-lang'));
   document.querySelector('.lang-' + lang)?.classList.add('active-lang');
 
-  // Apply JP font when Japanese selected
   document.body.classList.toggle('lang-jp-active', lang === 'jp');
 }
 
-// Restore language from sessionStorage on page load
 try {
   const saved = sessionStorage.getItem('ghostpath-lang');
   if (saved && langs.includes(saved)) {
@@ -99,12 +93,12 @@ document.querySelectorAll('.lang-item').forEach(el => {
 
 // Interactive sounds
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('a, button, .btn, .btn-primary, .btn-outline, .nav-cta, .lang-toggle, .btn-trailer').forEach(el => {
+  document.querySelectorAll('a, button, .btn, .btn-primary, .btn-ghost, .nav-cta, .lang-toggle, .theme-toggle, .badge, .feature-chip, .role-badge').forEach(el => {
     el.addEventListener('click', playClick);
     el.addEventListener('mouseenter', playHover);
   });
 
-  document.querySelectorAll('.nav-links a, .game-card, .stat, .contact-card, .footer-links a, .footer-social a, .founder-card, .value-item').forEach(el => {
+  document.querySelectorAll('.nav-links a, .stat, .contact-card, .footer-links a, .footer-social a, .founder-card, .value-item, .media-stat, .gallery-item').forEach(el => {
     el.addEventListener('mouseenter', playHover);
   });
 });
@@ -122,12 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let w, h, stars = [];
 
   const colors = [
-    '255, 60, 60',
-    '200, 50, 50',
-    '180, 80, 255',
-    '140, 60, 220',
-    '80, 140, 255',
-    '120, 180, 255',
+    '255, 70, 60',
+    '200, 60, 40',
+    '255, 120, 80',
+    '180, 90, 255',
+    '140, 70, 220',
     '255, 100, 150'
   ];
 
@@ -179,6 +172,68 @@ document.addEventListener('DOMContentLoaded', () => {
   draw();
 })();
 
+// Rising embers in the hero
+(() => {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1';
+  hero.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  let w, h, embers = [];
+
+  const resize = () => {
+    w = canvas.width = hero.offsetWidth;
+    h = canvas.height = hero.offsetHeight;
+  };
+
+  const spawn = () => {
+    embers = [];
+    const count = Math.floor(w / 60);
+    for (let i = 0; i < count; i++) {
+      embers.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 2.2 + 0.8,
+        vy: -(Math.random() * 0.6 + 0.25),
+        vx: (Math.random() - 0.5) * 0.3,
+        phase: Math.random() * Math.PI * 2,
+        speed: Math.random() * 1.2 + 0.4,
+        alpha: Math.random() * 0.5 + 0.2
+      });
+    }
+  };
+
+  const tick = () => {
+    ctx.clearRect(0, 0, w, h);
+    const time = Date.now() / 1000;
+    embers.forEach(p => {
+      p.x += p.vx + Math.sin(time * p.speed + p.phase) * 0.3;
+      p.y += p.vy;
+      if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
+
+      const flicker = 0.6 + 0.4 * Math.sin(time * 3 + p.phase);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, ${80 + Math.floor(40 * flicker)}, 50, ${p.alpha * flicker})`;
+      ctx.shadowColor = 'rgba(255, 90, 50, 0.9)';
+      ctx.shadowBlur = 8;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+    requestAnimationFrame(tick);
+  };
+
+  window.addEventListener('resize', () => { resize(); spawn(); });
+  resize();
+  spawn();
+  tick();
+})();
+
 // Scroll reveal animations
 (() => {
   const observer = new IntersectionObserver((entries) => {
@@ -187,11 +242,39 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
 
-  // Observe all sections and game cards
-  document.querySelectorAll('section, .game-card').forEach(el => {
+  document.querySelectorAll('section:not(.hero)').forEach(el => {
     observer.observe(el);
+  });
+})();
+
+// Header shadow on scroll
+(() => {
+  const header = document.querySelector('.header');
+  if (!header) return;
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// 3D tilt on featured media
+(() => {
+  const tiltables = document.querySelectorAll('.tilt');
+  if (!tiltables.length) return;
+
+  tiltables.forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const rect = el.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      el.style.transform = `perspective(900px) rotateY(${px * 7}deg) rotateX(${-py * 7}deg)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg)';
+    });
   });
 })();
 
@@ -202,7 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const iconDark = btn?.querySelector('.theme-icon-dark');
   const iconLight = btn?.querySelector('.theme-icon-light');
 
-  // Load saved theme
   const saved = localStorage.getItem('ghostpath-theme');
   if (saved === 'light') {
     html.setAttribute('data-theme', 'light');
@@ -250,4 +332,3 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') overlay.classList.remove('active');
   });
 })();
-

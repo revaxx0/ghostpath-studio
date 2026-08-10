@@ -1,95 +1,154 @@
 ﻿<%- include('partials/header') %>
+<% const mainGame = (games && games[0]) ? games[0] : null; %>
+<% const heroImg = (mainGame && mainGame.image) ? mainGame.image : '/images/GhostPath.jpg'; %>
+<% const trailerUrl = (mainGame && mainGame.trailer) ? mainGame.trailer : 'https://www.youtube.com/watch?v='; %>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="noise-overlay"></div>
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-bg" style="background-image:url('<%= heroImg %>')"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-fog"></div>
   <div class="container">
-    <div class="hero-content">
-      <span class="hero-badge">
-        <span class="badge-star">✦</span>
-        <span data-en="Indie Game Studio" data-tr="Bağımsız Oyun Stüdyosu" data-jp="インディーゲームスタジオ" data-ru="Инди-студия игр">Indie Game Studio</span>
+    <div class="hero-inner">
+      <span class="hero-kicker">
+        <span class="kicker-line"></span>
+        <span data-en="A GhostPath Studio Original" data-tr="GhostPath Studio Orijinali" data-jp="GhostPath Studio オリジナル" data-ru="Оригинал GhostPath Studio">A GhostPath Studio Original</span>
       </span>
-      <h1><span data-en="Don&rsquo;t follow the path" data-tr="Yolu takip etme" data-jp="道を追うな" data-ru="Не следуй за путём">Don&rsquo;t follow the path</span><br><span class="gradient-text" data-en="let it find you." data-tr="bırak yol seni bulsun." data-jp="道に追われろ。" data-ru="позволь пути найти тебя.">let it find you.</span></h1>
-      <p data-en="We craft atmospheric horror experiences that linger long after you&rsquo;ve looked away." data-tr="Baktıktan sonra bile uzun süre aklınızdan çıkmayacak atmosferik korku deneyimleri yaratıyoruz." data-jp="目をそらした後も長く心に残る、空気のようなホラー体験を創造します。" data-ru="Мы создаём атмосферные хорроры, которые остаются с вами ещё долго после того, как вы отвели взгляд.">We craft atmospheric horror experiences that linger long after you&rsquo;ve looked away.</p>
+      <h1 class="hero-title glitch" data-text="MAWBOUND">
+        <span class="hero-title-main">MAWBOUND</span>
+        <span class="hero-title-tag gradient-text" data-en="Don't follow the path — let it find you." data-tr="Yolu takip etme — bırak o seni bulsun." data-jp="道を追うな — 道に追われろ。" data-ru="Не следуй за путём — позволь ему найти тебя.">Don't follow the path — let it find you.</span>
+      </h1>
+      <p class="hero-sub" data-en="An atmospheric, story-driven horror experience. Every sound matters. Every shadow remembers. Are you ready to go inside?" data-tr="Atmosferik, hikaye odaklı bir korku deneyimi. Her ses önemlidir. Her gölge hatırlar. İçeri girmeye hazır mısın?" data-jp="空気のような、物語重視のホラー体験。すべての音が意味を持ち、すべての影が記憶する。中に入る準備はできているか？" data-ru="Атмосферный хоррор, основанный на сюжете. Каждый звук имеет значение. Каждая тень помнит. Готовы ли вы войти?">An atmospheric, story-driven horror experience. Every sound matters. Every shadow remembers. Are you ready to go inside?</p>
       <div class="hero-actions">
-        <a href="#games" class="btn btn-primary" data-en="Our Games" data-tr="Oyunlarımız" data-jp="ゲームを見る" data-ru="Наши игры">Our Games</a>
-        <a href="#founders" class="btn btn-outline" data-en="Our Team" data-tr="Ekibimiz" data-jp="チーム紹介" data-ru="Наша команда">Our Team</a>
-        <a href="https://ghostpath.itch.io" target="_blank" class="btn btn-outline" data-en="Itch.io →" data-tr="Itch.io →" data-jp="Itch.io →" data-ru="Itch.io →">Itch.io →</a>
+        <a href="#game" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.5 6.5l5 3.5-5 3.5v-7z"/></svg>
+          <span data-en="Enter the Game" data-tr="Oyuna Gir" data-jp="ゲームに入る" data-ru="Войти в игру">Enter the Game</span>
+        </a>
+        <a href="<%= trailerUrl %>" target="_blank" class="btn btn-ghost">
+          <span data-en="Watch Trailer" data-tr="Fragmanı İzle" data-jp="予告編を見る" data-ru="Смотреть трейлер">Watch Trailer</span>
+        </a>
+        <a href="https://ghostpath.itch.io" target="_blank" class="btn btn-ghost">
+          <span data-en="Itch.io →" data-tr="Itch.io →" data-jp="Itch.io →" data-ru="Itch.io →">Itch.io →</span>
+        </a>
       </div>
       <div class="hero-social">
         <a href="https://www.youtube.com/@GhostPathStudio" target="_blank" aria-label="YouTube" class="hero-social-link">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         </a>
         <a href="https://www.instagram.com/ghostpathstudio/" target="_blank" aria-label="Instagram" class="hero-social-link">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
         <a href="https://discord.gg/NqsJZtMaQb" target="_blank" aria-label="Discord" class="hero-social-link">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.074.074 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.074.074 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
         </a>
         <a href="https://www.tiktok.com/@ghostpathstudio" target="_blank" aria-label="TikTok" class="hero-social-link">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
         </a>
         <a href="https://x.com/ghostpathstudio" target="_blank" aria-label="X" class="hero-social-link">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
       </div>
     </div>
   </div>
-</section>
-
-<!-- Games -->
-<section id="games" class="games">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag" data-en="Our Projects" data-tr="Projelerimiz" data-jp="プロジェクト" data-ru="Наши проекты">Our Projects</span>
-      <h2 data-en="Games" data-tr="Oyunlar" data-jp="ゲーム" data-ru="Игры">Games</h2>
-      <p data-en="Every project is a doorway into another world. Enter if you dare." data-tr="Her proje başka bir dünyaya açılan bir kapı. Cesaretin varsa gir." data-jp="どのプロジェクトも異世界への扉。勇気があるなら、どうぞ。" data-ru="Каждый проект — это дверь в другой мир. Войди, если осмелишься.">Every project is a doorway into another world. Enter if you dare.</p>
-    </div>
-    <div class="games-grid">
-      <% games.forEach(game => { %>
-      <div class="game-card">
-        <% if (game.image) { %>
-        <div class="game-image">
-          <img src="<%= game.image %>" alt="<%= game.title %>" loading="lazy">
-          <div class="game-overlay">
-            <a href="<%= game.trailer %>" class="btn-trailer" target="_blank">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              <span data-en="Watch Trailer" data-tr="Fragmanı İzle" data-jp="予告編を見る" data-ru="Смотреть трейлер">Watch Trailer</span>
-            </a>
-          </div>
-        </div>
-        <% } %>
-        <div class="game-info">
-          <span class="game-tag"><%= game.tag %></span>
-          <h3><%= game.title %></h3>
-          <p class="game-desc-en"><%= game.descEN %></p>
-          <p class="game-desc-tr" style="display:none"><%= game.descTR %></p>
-          <p class="game-desc-jp" style="display:none"><%= game.descJP %></p>
-          <p class="game-desc-ru" style="display:none"><%= game.descRU %></p>
-          <span class="game-status game-status-en"><%= game.statusEN %></span>
-          <span class="game-status-tr" style="display:none"><%= game.statusTR %></span>
-          <span class="game-status-jp" style="display:none"><%= game.statusJP %></span>
-          <span class="game-status-ru" style="display:none"><%= game.statusRU %></span>
-          <a href="/games/<%= game.id %>" class="btn-readmore" data-en="Learn More →" data-tr="Daha Fazla →" data-jp="詳細 →" data-ru="Подробнее →">Learn More →</a>
-        </div>
-      </div>
-      <% }) %>
-    </div>
+  <div class="hero-scroll">
+    <span data-en="scroll" data-tr="kaydır" data-jp="スクロール" data-ru="листай">scroll</span>
+    <span class="hero-scroll-line"></span>
   </div>
 </section>
 
-<!-- Founders -->
+<!-- ================= FEATURED GAME ================= -->
+<section id="game" class="feature">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" data-en="Featured Title" data-tr="Öne Çıkan Oyun" data-jp="注目タイトル" data-ru="Главный проект">Featured Title</span>
+      <h2 class="display-title" data-en="The Game" data-tr="Oyun" data-jp="ゲーム" data-ru="Игра">The Game</h2>
+      <p data-en="One door. One path. Once you step inside, nothing looks the same." data-tr="Tek bir kapı. Tek bir yol. İçeri adım attığın anda hiçbir şey aynı görünmeyecek." data-jp="ひとつの扉。ひとつの道。中に入ったら、もう何も同じには見えない。" data-ru="Одна дверь. Один путь. Шагнув внутрь, вы уже не увидите мир прежним.">One door. One path. Once you step inside, nothing looks the same.</p>
+    </div>
+    <% if (mainGame) { %>
+    <div class="feature-layout">
+      <div class="feature-media tilt">
+        <div class="feature-image">
+          <img src="<%= mainGame.image %>" alt="<%= mainGame.title %>">
+          <div class="feature-image-frame"></div>
+          <span class="feature-status"><%= mainGame.tag %></span>
+        </div>
+        <div class="feature-media-meta">
+          <div class="media-stat">
+            <span class="media-stat-num"><%= mainGame.releaseDate %></span>
+            <span class="media-stat-label" data-en="Release Date" data-tr="Çıkış Tarihi" data-jp="リリース日" data-ru="Дата релиза">Release Date</span>
+          </div>
+          <div class="media-stat">
+            <span class="media-stat-num">EN · TR · JP · RU</span>
+            <span class="media-stat-label" data-en="Languages" data-tr="Diller" data-jp="対応言語" data-ru="Языки">Languages</span>
+          </div>
+          <div class="media-stat">
+            <span class="media-stat-num">PC</span>
+            <span class="media-stat-label" data-en="Platform" data-tr="Platform" data-jp="プラットフォーム" data-ru="Платформа">Platform</span>
+          </div>
+        </div>
+      </div>
+      <div class="feature-info">
+        <h3 class="feature-name"><%= mainGame.title %></h3>
+        <div class="feature-badges">
+          <span class="badge badge-status game-status game-status-en"><%= mainGame.statusEN %></span>
+          <span class="badge badge-status-tr game-status-tr" style="display:none"><%= mainGame.statusTR %></span>
+          <span class="badge badge-status-jp game-status-jp" style="display:none"><%= mainGame.statusJP %></span>
+          <span class="badge badge-status-ru game-status-ru" style="display:none"><%= mainGame.statusRU %></span>
+          <span class="badge"><%= mainGame.tag %></span>
+          <span class="badge">Single Player</span>
+        </div>
+        <p class="feature-desc game-desc game-desc-en"><%= mainGame.fullDescEN %></p>
+        <p class="feature-desc game-desc game-desc-tr" style="display:none"><%= mainGame.fullDescTR %></p>
+        <p class="feature-desc game-desc game-desc-jp" style="display:none"><%= mainGame.fullDescJP %></p>
+        <p class="feature-desc game-desc game-desc-ru" style="display:none"><%= mainGame.fullDescRU %></p>
+        <div class="feature-features">
+          <span class="feature-chip">
+            <span class="chip-icon">👁️</span>
+            <span data-en="Story-driven horror" data-tr="Hikaye odaklı korku" data-jp="ストーリー重視のホラー" data-ru="Сюжетный хоррор">Story-driven horror</span>
+          </span>
+          <span class="feature-chip">
+            <span class="chip-icon">🌫️</span>
+            <span data-en="Atmospheric dread" data-tr="Atmosferik dehşet" data-jp="重い空気の恐怖" data-ru="Атмосферный ужас">Atmospheric dread</span>
+          </span>
+          <span class="feature-chip">
+            <span class="chip-icon">📜</span>
+            <span data-en="Experimental narrative" data-tr="Deneysel anlatı" data-jp="実験的な物語" data-ru="Экспериментальный сюжет">Experimental narrative</span>
+          </span>
+          <span class="feature-chip">
+            <span class="chip-icon">🎮</span>
+            <span data-en="Immersive sound design" data-tr="Sarmalayan ses tasarımı" data-jp="没入感のある音響" data-ru="Погружающий звук">Immersive sound design</span>
+          </span>
+        </div>
+        <div class="feature-actions">
+          <a href="/games/<%= mainGame.id %>" class="btn btn-primary">
+            <span data-en="Learn More" data-tr="Daha Fazla" data-jp="詳細を見る" data-ru="Подробнее">Learn More</span>
+          </a>
+          <a href="<%= mainGame.trailer %>" target="_blank" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <span data-en="Watch Trailer" data-tr="Fragmanı İzle" data-jp="予告編を見る" data-ru="Смотреть трейлер">Watch Trailer</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <% } else { %>
+    <div class="feature-empty">
+      <p data-en="New horrors are being crafted. Check back soon." data-tr="Yeni korkular şekilleniyor. Çok yakında burada." data-jp="新しい恐怖が形になりつつある。また近いうちに。" data-ru="Новые ужасы создаются. Загляните позже.">New horrors are being crafted. Check back soon.</p>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- ================= FOUNDERS ================= -->
 <section id="founders" class="founders">
   <div class="container">
     <div class="section-header">
       <span class="section-tag" data-en="The Minds Behind It" data-tr="Arkasındaki Zihinler" data-jp="創設者" data-ru="Создатели">The Minds Behind It</span>
-      <h2 data-en="Founders" data-tr="Kurucular" data-jp="創設者" data-ru="Основатели">Founders</h2>
-      <p data-en="The two pillars of GhostPath Studio." data-tr="GhostPath Studio'nun iki temel direği." data-jp="GhostPath Studioの二本の柱。" data-ru="Две опоры GhostPath Studio.">The two pillars of GhostPath Studio.</p>
+      <h2 class="display-title" data-en="The Founders" data-tr="Kurucular" data-jp="創設者" data-ru="Основатели">The Founders</h2>
+      <p data-en="Two minds. One nightmare. Meet the pillars of GhostPath Studio." data-tr="İki zihin. Tek bir kabus. GhostPath Studio'nun temel direkleriyle tanışın." data-jp="二つの心。ひとつの悪夢。GhostPath Studioの柱に会おう。" data-ru="Два разума. Один кошмар. Познакомьтесь с опорами GhostPath Studio.">Two minds. One nightmare. Meet the pillars of GhostPath Studio.</p>
     </div>
     <div class="founders-grid">
       <div class="founder-card">
-        <div class="founder-avatar zetagg"></div>
+        <div class="founder-avatar zetagg"><span class="avatar-initials">ZS</span></div>
         <h3>Atakan <span class="founder-nick">"ZeTaGG"</span> Sönmez</h3>
         <div class="founder-roles">
           <span class="role-badge">🎨 <span data-en="Model Designer" data-tr="Model Tasarımcısı" data-jp="モデルデザイナー" data-ru="Модельер">Model Designer</span></span>
@@ -98,7 +157,7 @@
         <p data-en="The architect of our worlds — crafting every model and map with painstaking detail." data-tr="Dünyalarımızın mimarı — her modeli ve haritayı titizlikle işliyor." data-jp="世界の設計者 — 細部までこだわり抜いたモデルとマップを制作。" data-ru="Архитектор наших миров — создаёт каждую модель и карту с кропотливой детализацией.">The architect of our worlds — crafting every model and map with painstaking detail.</p>
       </div>
       <div class="founder-card">
-        <div class="founder-avatar revaxx"></div>
+        <div class="founder-avatar revaxx"><span class="avatar-initials">NS</span></div>
         <h3>Necmi <span class="founder-nick">"ReVaXX"</span> Sönmez</h3>
         <div class="founder-roles">
           <span class="role-badge role-founder">👑 <span data-en="Founder" data-tr="Kurucu" data-jp="創設者" data-ru="Основатель">Founder</span></span>
@@ -111,27 +170,27 @@
   </div>
 </section>
 
-<!-- News -->
-<section id="news" class="news-section-compact">
+<!-- ================= NEWS ================= -->
+<section id="news" class="news-section">
   <div class="container">
     <div class="section-header">
       <span class="section-tag" data-en="Latest" data-tr="Son Haberler" data-jp="最新情報" data-ru="Последнее">Latest</span>
-      <h2 data-en="News & Updates" data-tr="Haberler & Güncellemeler" data-jp="ニュース＆アップデート" data-ru="Новости и обновления">News & Updates</h2>
-      <p data-en="Stay up to date with the latest from GhostPath Studio." data-tr="GhostPath Studio'dan son gelişmelerden haberdar olun." data-jp="GhostPath Studioの最新情報をチェックしよう。" data-ru="Будьте в курсе последних новостей GhostPath Studio.">Stay up to date with the latest from GhostPath Studio.</p>
+      <h2 class="display-title" data-en="News & Updates" data-tr="Haberler & Güncellemeler" data-jp="ニュース＆アップデート" data-ru="Новости и обновления">News & Updates</h2>
+      <p data-en="Signals from the dark. Stay up to date with GhostPath Studio." data-tr="Karanlıktan gelen sinyaller. GhostPath Studio'dan haberdar olun." data-jp="暗闇からの信号。GhostPath Studioの最新情報をチェック。" data-ru="Сигналы из тьмы. Будьте в курсе новостей GhostPath Studio.">Signals from the dark. Stay up to date with GhostPath Studio.</p>
     </div>
     <div class="news-card-link">
-      <a href="/news" class="btn btn-primary btn-lg" data-en="View News →" data-tr="Haberleri Görüntüle →" data-jp="ニュースを見る →" data-ru="Смотреть новости →">View News →</a>
+      <a href="/news" class="btn btn-primary btn-lg" data-en="Enter the Newsroom →" data-tr="Haberleri Görüntüle →" data-jp="ニュースを見る →" data-ru="Смотреть новости →">Enter the Newsroom →</a>
     </div>
   </div>
 </section>
 
-<!-- About -->
+<!-- ================= ABOUT ================= -->
 <section id="about" class="about">
   <div class="container">
     <div class="about-grid">
       <div class="about-content">
         <span class="section-tag" data-en="About Us" data-tr="Hakkımızda" data-jp="私たちについて" data-ru="О нас">About Us</span>
-        <h2 data-en="Who We Are" data-tr="Biz Kimiz" data-jp="私たちは" data-ru="Кто мы">Who We Are</h2>
+        <h2 class="display-title" data-en="Who We Are" data-tr="Biz Kimiz" data-jp="私たちは" data-ru="Кто мы">Who We Are</h2>
         <div class="about-text-en">
           <p>We're a small indie horror game team from Türkiye, passionate about crafting unsettling and atmospheric experiences. GhostPath Studio focuses on creating stories that blend fear, mystery, and emotion — where every sound and shadow matters.</p>
           <p>Our goal isn't perfection — it's immersion. We experiment, learn, and evolve with every project we make. Feedback and honest criticism are always welcome — that's how we grow.</p>
@@ -181,36 +240,34 @@
   </div>
 </section>
 
-<!-- Contact -->
+<!-- ================= CONTACT ================= -->
 <section id="contact" class="contact">
   <div class="container">
     <div class="section-header">
       <span class="section-tag" data-en="Get in Touch" data-tr="İletişim" data-jp="お問い合わせ" data-ru="Свяжитесь с нами">Get in Touch</span>
-      <h2 data-en="Reach Out" data-tr="Bize Ulaşın" data-jp="お問い合わせ" data-ru="Напишите нам">Reach Out</h2>
-      <p data-en="Questions, feedback, or just want to say hi — we&rsquo;d love to hear from you." data-tr="Sorular, geri bildirim veya sadece merhaba demek için — sizden haber almayı çok isteriz." data-jp="ご質問、フィードバック、ご挨拶など — お気軽にお聞かせください。" data-ru="Вопросы, отзывы или просто хотите поздороваться — мы будем рады услышать вас.">Questions, feedback, or just want to say hi — we&rsquo;d love to hear from you.</p>
+      <h2 class="display-title" data-en="Reach Out" data-tr="Bize Ulaşın" data-jp="お問い合わせ" data-ru="Напишите нам">Reach Out</h2>
+      <p data-en="Questions, feedback, or just want to say hi — we'd love to hear from you." data-tr="Sorular, geri bildirim veya sadece merhaba demek için — sizden haber almayı çok isteriz." data-jp="ご質問、フィードバック、ご挨拶など — お気軽にお聞かせください。" data-ru="Вопросы, отзывы или просто хотите поздороваться — мы будем рады услышать вас.">Questions, feedback, or just want to say hi — we'd love to hear from you.</p>
     </div>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <div class="contact-card">
-          <span class="contact-icon">📧</span>
-          <h4 data-en="Email" data-tr="E-posta" data-jp="メール" data-ru="Email">Email</h4>
-          <a href="mailto:ghostpath61@gmail.com">ghostpath61@gmail.com</a>
-        </div>
-        <div class="contact-card">
-          <span class="contact-icon">💬</span>
-          <h4>Discord</h4>
-          <a href="https://discord.gg/NqsJZtMaQb" target="_blank">discord.gg/NqsJZtMaQb</a>
-        </div>
-        <div class="contact-card">
-          <span class="contact-icon">📺</span>
-          <h4>YouTube</h4>
-          <a href="https://www.youtube.com/@GhostPathStudio" target="_blank">@GhostPathStudio</a>
-        </div>
-        <div class="contact-card">
-          <span class="contact-icon">📸</span>
-          <h4>Instagram</h4>
-          <a href="https://www.instagram.com/ghostpathstudio/" target="_blank">@ghostpathstudio</a>
-        </div>
+    <div class="contact-info">
+      <div class="contact-card">
+        <span class="contact-icon">📧</span>
+        <h4 data-en="Email" data-tr="E-posta" data-jp="メール" data-ru="Email">Email</h4>
+        <a href="mailto:ghostpath61@gmail.com">ghostpath61@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <span class="contact-icon">💬</span>
+        <h4>Discord</h4>
+        <a href="https://discord.gg/NqsJZtMaQb" target="_blank">discord.gg/NqsJZtMaQb</a>
+      </div>
+      <div class="contact-card">
+        <span class="contact-icon">📺</span>
+        <h4>YouTube</h4>
+        <a href="https://www.youtube.com/@GhostPathStudio" target="_blank">@GhostPathStudio</a>
+      </div>
+      <div class="contact-card">
+        <span class="contact-icon">📸</span>
+        <h4>Instagram</h4>
+        <a href="https://www.instagram.com/ghostpathstudio/" target="_blank">@ghostpathstudio</a>
       </div>
     </div>
   </div>
