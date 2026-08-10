@@ -216,19 +216,6 @@ section:not(.hero).visible {
   color: var(--accent);
 }
 
-.logo-flag {
-  display: inline-flex;
-  margin-left: 10px;
-  vertical-align: middle;
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow: 0 0 12px rgba(227, 10, 23, 0.5);
-}
-
-.logo-flag svg {
-  display: block;
-}
-
 .nav-links {
   display: flex;
   align-items: center;
