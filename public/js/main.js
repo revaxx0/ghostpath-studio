@@ -33,6 +33,7 @@ function playHover() {
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  if (anchor.closest('.nav-menu')) return;
   anchor.addEventListener('click', e => {
     const target = document.querySelector(anchor.getAttribute('href'));
     if (target) {
@@ -75,7 +76,7 @@ function setLang(lang, persist) {
   if (aboutEl) aboutEl.style.display = '';
 
   document.querySelectorAll('.lang-en, .lang-tr, .lang-jp, .lang-ru').forEach(el => el.classList.remove('active-lang'));
-  document.querySelector('.lang-' + lang)?.classList.add('active-lang');
+  document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active-lang'));
 
   document.body.classList.toggle('lang-jp-active', lang === 'jp');
 }
@@ -90,6 +91,46 @@ try {
 document.querySelectorAll('.lang-item').forEach(el => {
   el.addEventListener('click', () => setLang(el.dataset.lang));
 });
+
+// Mobile menu
+(() => {
+  const toggle = document.getElementById('menuToggle');
+  const backdrop = document.getElementById('menuBackdrop');
+  const menu = document.getElementById('navMenu');
+  if (!toggle || !menu) return;
+
+  const setMenu = (open) => {
+    document.body.classList.toggle('nav-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  };
+
+  toggle.addEventListener('click', () => {
+    setMenu(!document.body.classList.contains('nav-open'));
+    playClick();
+  });
+
+  backdrop?.addEventListener('click', () => setMenu(false));
+
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', e => {
+      setMenu(false);
+      const href = a.getAttribute('href') || '';
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 330);
+      }
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) setMenu(false);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') setMenu(false);
+  });
+})();
 
 // Interactive sounds
 document.addEventListener('DOMContentLoaded', () => {
@@ -236,6 +277,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Scroll reveal animations
 (() => {
+  const sections = document.querySelectorAll('section:not(.hero)');
+
+  if (!('IntersectionObserver' in window)) {
+    sections.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -244,9 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.12 });
 
-  document.querySelectorAll('section:not(.hero)').forEach(el => {
-    observer.observe(el);
-  });
+  sections.forEach(el => observer.observe(el));
 })();
 
 // Header shadow on scroll
@@ -280,31 +326,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Theme toggle
 (() => {
-  const btn = document.getElementById('themeToggle');
+  const btns = document.querySelectorAll('.theme-toggle');
   const html = document.documentElement;
-  const iconDark = btn?.querySelector('.theme-icon-dark');
-  const iconLight = btn?.querySelector('.theme-icon-light');
+
+  const applyIcons = () => {
+    const isLight = html.getAttribute('data-theme') === 'light';
+    document.querySelectorAll('.theme-icon-dark').forEach(i => {
+      i.style.display = isLight ? 'none' : '';
+    });
+    document.querySelectorAll('.theme-icon-light').forEach(i => {
+      i.style.display = isLight ? '' : 'none';
+    });
+  };
 
   const saved = localStorage.getItem('ghostpath-theme');
   if (saved === 'light') {
     html.setAttribute('data-theme', 'light');
-    if (iconDark) iconDark.style.display = 'none';
-    if (iconLight) iconLight.style.display = '';
   }
+  applyIcons();
 
-  btn?.addEventListener('click', () => {
-    const isLight = html.getAttribute('data-theme') === 'light';
-    if (isLight) {
-      html.removeAttribute('data-theme');
-      localStorage.setItem('ghostpath-theme', 'dark');
-      if (iconDark) iconDark.style.display = '';
-      if (iconLight) iconLight.style.display = 'none';
-    } else {
-      html.setAttribute('data-theme', 'light');
-      localStorage.setItem('ghostpath-theme', 'light');
-      if (iconDark) iconDark.style.display = 'none';
-      if (iconLight) iconLight.style.display = '';
-    }
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isLight = html.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('ghostpath-theme', 'dark');
+      } else {
+        html.setAttribute('data-theme', 'light');
+        localStorage.setItem('ghostpath-theme', 'light');
+      }
+      applyIcons();
+    });
   });
 })();
 

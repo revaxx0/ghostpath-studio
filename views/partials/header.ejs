@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#070509">
   <title><%= title %></title>
   <meta name="description" content="GhostPath Studio — Independent horror game studio from Türkiye. MAWBOUND: a story-driven atmospheric horror, coming soon.">
   <meta property="og:title" content="GhostPath Studio — Indie Game Studio">
@@ -33,7 +34,7 @@
         </span>
         <span class="logo-text">GhostPath<span class="logo-dot">.</span></span>
       </a>
-      <ul class="nav-links">
+      <ul class="nav-links nav-links-desktop">
         <li><a href="/" class="<%= currentPage === 'home' ? 'active' : '' %>" data-en="Home" data-tr="Ana Sayfa" data-jp="ホーム" data-ru="Главная">Home</a></li>
         <li><a href="#game" data-en="The Game" data-tr="Oyun" data-jp="ゲーム" data-ru="Игра">The Game</a></li>
         <li><a href="#founders" data-en="Team" data-tr="Ekip" data-jp="チーム" data-ru="Команда">Team</a></li>
@@ -41,11 +42,47 @@
         <li><a href="#about" data-en="About" data-tr="Hakkında" data-jp="について" data-ru="О нас">About</a></li>
         <li><a href="#contact" class="nav-cta" data-en="Contact" data-tr="İletişim" data-jp="お問い合わせ" data-ru="Контакты">Contact</a></li>
       </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <div class="nav-tools nav-tools-desktop">
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <span class="theme-icon-dark">☽</span>
+          <span class="theme-icon-light" style="display:none">☀</span>
+        </button>
+        <div class="lang-toggle">
+          <span class="lang-item lang-en active-lang" data-lang="en">EN</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-item lang-tr" data-lang="tr">TR</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-item lang-jp" data-lang="jp">JP</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-item lang-ru" data-lang="ru">RU</span>
+        </div>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="menu-backdrop" id="menuBackdrop"></div>
+
+  <div class="nav-menu" id="navMenu">
+    <span class="nav-menu-head logo-text">GhostPath<span class="logo-dot">.</span></span>
+    <ul class="nav-links">
+      <li><a href="/" class="<%= currentPage === 'home' ? 'active' : '' %>" data-en="Home" data-tr="Ana Sayfa" data-jp="ホーム" data-ru="Главная">Home</a></li>
+      <li><a href="#game" data-en="The Game" data-tr="Oyun" data-jp="ゲーム" data-ru="Игра">The Game</a></li>
+      <li><a href="#founders" data-en="Team" data-tr="Ekip" data-jp="チーム" data-ru="Команда">Team</a></li>
+      <li><a href="/news" data-en="News" data-tr="Haberler" data-jp="ニュース" data-ru="Новости">News</a></li>
+      <li><a href="#about" data-en="About" data-tr="Hakkında" data-jp="について" data-ru="О нас">About</a></li>
+      <li><a href="#contact" class="nav-cta" data-en="Contact" data-tr="İletişim" data-jp="お問い合わせ" data-ru="Контакты">Contact</a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="theme-toggle" aria-label="Toggle theme">
         <span class="theme-icon-dark">☽</span>
         <span class="theme-icon-light" style="display:none">☀</span>
       </button>
-      <div class="lang-toggle" id="langToggle">
+      <div class="lang-toggle">
         <span class="lang-item lang-en active-lang" data-lang="en">EN</span>
         <span class="lang-sep">|</span>
         <span class="lang-item lang-tr" data-lang="tr">TR</span>
@@ -54,6 +91,7 @@
         <span class="lang-sep">|</span>
         <span class="lang-item lang-ru" data-lang="ru">RU</span>
       </div>
-    </nav>
-  </header>
+    </div>
+  </div>
+
   <main>
