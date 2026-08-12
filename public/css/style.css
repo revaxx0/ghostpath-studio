@@ -28,8 +28,6 @@
   --shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
   --soon-fill: rgba(255, 255, 255, 0.035);
   --soon-stroke: rgba(255, 255, 255, 0.08);
-  --soon-fill-soft: rgba(255, 255, 255, 0.02);
-  --soon-stroke-soft: rgba(255, 255, 255, 0.035);
 }
 
 [data-theme="light"] {
@@ -53,8 +51,6 @@
   --shadow: 0 30px 80px rgba(60, 30, 30, 0.12);
   --soon-fill: rgba(20, 10, 10, 0.045);
   --soon-stroke: rgba(20, 10, 10, 0.1);
-  --soon-fill-soft: rgba(20, 10, 10, 0.025);
-  --soon-stroke-soft: rgba(20, 10, 10, 0.05);
 }
 
 html {
@@ -646,39 +642,12 @@ body.nav-open .nav-menu {
   display: block;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(4.5rem, 36vw, 40rem);
-  letter-spacing: 0.08em;
+  font-size: clamp(3rem, 21vw, 18rem);
+  letter-spacing: 0.1em;
   white-space: nowrap;
   color: var(--soon-fill);
   -webkit-text-stroke: 1.5px var(--soon-stroke);
   text-shadow: 0 0 60px rgba(255, 59, 59, 0.06);
-}
-
-.soon-smile {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: clamp(8px, 2vh, 24px);
-  font-family: var(--font-mono);
-  font-size: clamp(1.6rem, 6vw, 4.5rem);
-  color: var(--soon-fill-soft);
-  -webkit-text-stroke: 1px var(--soon-stroke-soft);
-  line-height: 0.68;
-}
-
-.soon-dots {
-  display: block;
-  transform-origin: 50% 50%;
-  animation: soonBlink 5s ease-in-out infinite;
-}
-
-.soon-mouth {
-  display: block;
-}
-
-@keyframes soonBlink {
-  0%, 46%, 54%, 100% { transform: scaleY(1); }
-  50% { transform: scaleY(0.12); }
 }
 
 .hero-inner {
