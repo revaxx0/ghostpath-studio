@@ -1628,9 +1628,17 @@ body.nav-open .nav-menu {
 
 .about-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "games founded"
+    "ideas visitors";
   gap: 16px;
 }
+
+.stat-games { grid-area: games; }
+.stat-founded { grid-area: founded; }
+.stat-ideas { grid-area: ideas; }
+.stat-visitors { grid-area: visitors; }
 
 .stat {
   padding: 34px 16px;
@@ -1666,6 +1674,95 @@ body.nav-open .nav-menu {
   letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--dim);
+}
+
+.stat-visitors {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-visitors::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, var(--accent-soft), transparent 65%);
+  pointer-events: none;
+}
+
+.stat-visitors > * {
+  position: relative;
+}
+
+.stat-visitors-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.live-eye {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.72); }
+}
+
+.stat-visitors.flash .stat-number {
+  animation: count-flash 0.6s ease;
+}
+
+@keyframes count-flash {
+  0% { opacity: 0.35; transform: scale(0.94); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.stat-online {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.online-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3ddc84;
+  box-shadow: 0 0 8px rgba(61, 220, 132, 0.7);
+  animation: live-pulse 1.2s ease-in-out infinite;
+}
+
+.online-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.online-label {
+  letter-spacing: 0.4px;
 }
 
 /* ===== Contact ===== */
@@ -2299,6 +2396,12 @@ body.lang-jp-active p {
   }
 
   .about-stats {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "games"
+      "founded"
+      "visitors"
+      "ideas";
     gap: 12px;
   }
 
