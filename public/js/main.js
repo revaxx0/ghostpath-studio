@@ -384,31 +384,3 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') overlay.classList.remove('active');
   });
 })();
-
-// Visitor counter
-(() => {
-  const countEl = document.getElementById('visitorCount');
-  if (!countEl) return;
-
-  const card = countEl.closest('.stat-visitors');
-  const format = n => Number(n).toLocaleString('en-US');
-  let lastTotal = null;
-
-  const update = () => {
-    fetch('/api/visitors', { headers: { 'Accept': 'application/json' } })
-      .then(r => r.json())
-      .then(data => {
-        countEl.textContent = format(data.total);
-        if (card && lastTotal !== null && data.total !== lastTotal) {
-          card.classList.remove('flash');
-          void card.offsetWidth;
-          card.classList.add('flash');
-        }
-        lastTotal = data.total;
-      })
-      .catch(() => {});
-  };
-
-  update();
-  setInterval(update, 60000);
-})();
