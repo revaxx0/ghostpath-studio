@@ -48,7 +48,9 @@ app.use(express.json({ limit: '10kb' }));
 const ATTACK_PATTERN = /(\%00)|(\.\.\/|\.\.%2f)|(<\s*script)|(javascript\s*:)|(on(load|error|click|mouseover|focus|submit)\s*=)|(<\s*iframe)|(<\s*object)|((\%27)|(\%22))|(\b(union|select|insert|update|delete|drop|alter|create|exec|xp_cmdshell|declare|waitfor|sleep)\b)|(\b\d+\s+or\s+1\s*=\s*1)|(\b\-\-\s)/i;
 
 app.use((req, res, next) => {
-  if (ATTACK_PATTERN.test(req.originalUrl)) {
+  let haystack = req.originalUrl;
+  try { haystack = decodeURIComponent(req.originalUrl); } catch (e) {}
+  if (ATTACK_PATTERN.test(haystack)) {
     return res.status(403).json({ error: 'Forbidden' });
   }
   next();
