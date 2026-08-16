@@ -385,10 +385,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-// Live visitor counter
+// Visitor counter
 (() => {
   const countEl = document.getElementById('visitorCount');
-  const onlineEl = document.getElementById('onlineCount');
   if (!countEl) return;
 
   const card = countEl.closest('.stat-visitors');
@@ -400,7 +399,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(r => r.json())
       .then(data => {
         countEl.textContent = format(data.total);
-        if (onlineEl) onlineEl.textContent = format(data.online);
         if (card && lastTotal !== null && data.total !== lastTotal) {
           card.classList.remove('flash');
           void card.offsetWidth;
@@ -412,5 +410,5 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   update();
-  setInterval(update, 30000);
+  setInterval(update, 60000);
 })();
