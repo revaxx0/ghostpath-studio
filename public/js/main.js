@@ -384,3 +384,52 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') overlay.classList.remove('active');
   });
 })();
+
+// Game carousel
+(() => {
+  const track = document.getElementById('gameTrack');
+  const prevBtn = document.getElementById('gamePrev');
+  const nextBtn = document.getElementById('gameNext');
+  const dotsWrap = document.getElementById('gameDots');
+  if (!track) return;
+
+  const slides = track.querySelectorAll('.feature-slide');
+  const dots = dotsWrap ? dotsWrap.querySelectorAll('.carousel-dot') : [];
+  let current = 0;
+  let autoTimer;
+
+  function goTo(i) {
+    current = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+  }
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 6000);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { playClick(); goTo(current - 1); resetAuto(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { playClick(); goTo(current + 1); resetAuto(); });
+
+  dots.forEach(d => {
+    d.addEventListener('click', () => { playClick(); goTo(parseInt(d.dataset.slide)); resetAuto(); });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { goTo(current - 1); resetAuto(); }
+    if (e.key === 'ArrowRight') { goTo(current + 1); resetAuto(); }
+  });
+
+  let touchX = 0;
+  track.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? goTo(current + 1) : goTo(current - 1);
+      resetAuto();
+    }
+  }, { passive: true });
+
+  resetAuto();
+})();

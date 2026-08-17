@@ -103,12 +103,51 @@ const games = [
     fullDescRU: 'Скоро.',
     releaseDate: 'TBA',
     image: '/images/GhostPath.jpg',
-    gallery: ['/images/GhostPath.jpg'],
     trailer: 'https://www.youtube.com/watch?v=',
     statusEN: 'Coming Soon',
     statusTR: 'Çok Yakında',
     statusJP: '近日公開',
-    statusRU: 'Скоро'
+    statusRU: 'Скоро',
+    extraBadges: [
+      { en: 'Multiplayer', tr: 'Çok Oyunculu', jp: 'マルチプレイ', ru: 'Мультиплеер' }
+    ],
+    chips: [
+      { icon: '👥', en: 'Multiplayer', tr: 'Çok Oyunculu', jp: 'マルチプレイ', ru: 'Мультиплеер' },
+      { icon: '🎉', en: 'Party Game', tr: 'Parti Oyunu', jp: 'パーティーゲーム', ru: 'Партийная игра' },
+      { icon: '😱', en: 'Horror & Fun', tr: 'Korku & Eğlence', jp: 'ホラー＆楽しさ', ru: 'Ужас и веселье' },
+      { icon: '🤝', en: 'Teamwork', tr: 'Takım Çalışması', jp: 'チームワーク', ru: 'Командная работа' },
+      { icon: '🗺️', en: 'Challenging & Eerie Maps', tr: 'Zorlayıcı ve Ürpertici Haritalar', jp: '難関で不気味なマップ', ru: 'Сложные и жуткие карты' }
+    ]
+  },
+  {
+    id: 'ghostseries-stay-inside',
+    title: 'GhostSeries: Stay Inside',
+    tag: 'Horror',
+    descEN: 'Coming soon.',
+    descTR: 'Çok yakında.',
+    descJP: '近日公開。',
+    descRU: 'Скоро.',
+    fullDescEN: 'Coming soon.',
+    fullDescTR: 'Çok yakında.',
+    fullDescJP: '近日公開。',
+    fullDescRU: 'Скоро.',
+    releaseDate: 'TBA',
+    image: '/images/GhostPath.jpg',
+    trailer: 'https://www.youtube.com/watch?v=',
+    statusEN: 'Coming Soon',
+    statusTR: 'Çok Yakında',
+    statusJP: '近日公開',
+    statusRU: 'Скоро',
+    extraBadges: [
+      { en: 'Singleplayer', tr: 'Tek Oyuncu', jp: 'シングルプレイ', ru: 'Одиночная игра' },
+      { en: 'Horror Story', tr: 'Korku Hikayesi', jp: 'ホラーストーリー', ru: 'Хоррор-история' }
+    ],
+    chips: [
+      { icon: '👁️', en: 'Singleplayer', tr: 'Tek Oyuncu', jp: 'シングルプレイ', ru: 'Одиночная игра' },
+      { icon: '😱', en: 'Horror', tr: 'Korku', jp: 'ホラー', ru: 'Хоррор' },
+      { icon: '📖', en: 'Story-driven', tr: 'Hikaye Odaklı', jp: 'ストーリー重視', ru: 'Сюжетная' },
+      { icon: '🌫️', en: 'Atmospheric', tr: 'Atmosferik', jp: '雰囲気重視', ru: 'Атмосферная' }
+    ]
   }
 ];
 

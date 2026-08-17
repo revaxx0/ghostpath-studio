@@ -54,79 +54,86 @@
 <section id="game" class="feature">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag" data-en="Featured Title" data-tr="Öne Çıkan Oyun" data-jp="注目タイトル" data-ru="Главный проект">Featured Title</span>
-      <h2 class="display-title" data-en="The Game" data-tr="Oyun" data-jp="ゲーム" data-ru="Игра">The Game</h2>
+      <span class="section-tag" data-en="Featured Titles" data-tr="Öne Çıkan Oyunlar" data-jp="注目タイトル" data-ru="Главные проекты">Featured Titles</span>
+      <h2 class="display-title" data-en="The Games" data-tr="Oyunlar" data-jp="ゲーム" data-ru="Игры">The Games</h2>
       <p data-en="One door. One path. Once you step inside, nothing looks the same." data-tr="Tek bir kapı. Tek bir yol. İçeri adım attığın anda hiçbir şey aynı görünmeyecek." data-jp="ひとつの扉。ひとつの道。中に入ったら、もう何も同じには見えない。" data-ru="Одна дверь. Один путь. Шагнув внутрь, вы уже не увидите мир прежним.">One door. One path. Once you step inside, nothing looks the same.</p>
     </div>
-    <% if (mainGame) { %>
-    <div class="feature-layout">
-      <div class="feature-media tilt">
-        <div class="feature-image">
-          <img src="<%= mainGame.image %>" alt="<%= mainGame.title %>">
-          <div class="feature-image-frame"></div>
-          <span class="feature-status"><%= mainGame.tag %></span>
+    <% if (games && games.length > 0) { %>
+    <div class="feature-carousel">
+      <div class="feature-carousel-track" id="gameTrack">
+        <% games.forEach(function(game) { %>
+        <div class="feature-slide">
+          <div class="feature-layout">
+            <div class="feature-media tilt">
+              <div class="feature-image">
+                <img src="<%= game.image %>" alt="<%= game.title %>">
+                <div class="feature-image-frame"></div>
+                <span class="feature-status"><%= game.tag %></span>
+              </div>
+              <div class="feature-media-meta">
+                <div class="media-stat">
+                  <span class="media-stat-num"><%= game.releaseDate %></span>
+                  <span class="media-stat-label" data-en="Release Date" data-tr="Çıkış Tarihi" data-jp="リリース日" data-ru="Дата релиза">Release Date</span>
+                </div>
+                <div class="media-stat">
+                  <span class="media-stat-num" data-en="Soon" data-tr="Yakında" data-jp="近日" data-ru="Скоро">Soon</span>
+                  <span class="media-stat-label" data-en="Languages" data-tr="Diller" data-jp="対応言語" data-ru="Языки">Languages</span>
+                </div>
+                <div class="media-stat">
+                  <span class="media-stat-num">PC</span>
+                  <span class="media-stat-label" data-en="Platform" data-tr="Platform" data-jp="プラットフォーム" data-ru="Платформа">Platform</span>
+                </div>
+              </div>
+            </div>
+            <div class="feature-info">
+              <h3 class="feature-name"><%= game.title %></h3>
+              <div class="feature-badges">
+                <span class="badge badge-status game-status game-status-en"><%= game.statusEN %></span>
+                <span class="badge badge-status-tr game-status-tr" style="display:none"><%= game.statusTR %></span>
+                <span class="badge badge-status-jp game-status-jp" style="display:none"><%= game.statusJP %></span>
+                <span class="badge badge-status-ru game-status-ru" style="display:none"><%= game.statusRU %></span>
+                <span class="badge"><%= game.tag %></span>
+                <% game.extraBadges.forEach(function(b) { %>
+                <span class="badge" data-en="<%= b.en %>" data-tr="<%= b.tr %>" data-jp="<%= b.jp %>" data-ru="<%= b.ru %>"><%= b.en %></span>
+                <% }); %>
+              </div>
+              <p class="feature-desc game-desc game-desc-en"><%= game.fullDescEN %></p>
+              <p class="feature-desc game-desc game-desc-tr" style="display:none"><%= game.fullDescTR %></p>
+              <p class="feature-desc game-desc game-desc-jp" style="display:none"><%= game.fullDescJP %></p>
+              <p class="feature-desc game-desc game-desc-ru" style="display:none"><%= game.fullDescRU %></p>
+              <div class="feature-features">
+                <% game.chips.forEach(function(chip) { %>
+                <span class="feature-chip">
+                  <span class="chip-icon"><%= chip.icon %></span>
+                  <span data-en="<%= chip.en %>" data-tr="<%= chip.tr %>" data-jp="<%= chip.jp %>" data-ru="<%= chip.ru %>"><%= chip.en %></span>
+                </span>
+                <% }); %>
+              </div>
+              <div class="feature-actions">
+                <a href="/games/<%= game.id %>" class="btn btn-primary">
+                  <span data-en="Learn More" data-tr="Daha Fazla" data-jp="詳細を見る" data-ru="Подробнее">Learn More</span>
+                </a>
+                <a href="<%= game.trailer %>" target="_blank" class="btn btn-ghost">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  <span data-en="Watch Trailer" data-tr="Fragmanı İzle" data-jp="予告編を見る" data-ru="Смотреть трейлер">Watch Trailer</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="feature-media-meta">
-          <div class="media-stat">
-            <span class="media-stat-num"><%= mainGame.releaseDate %></span>
-            <span class="media-stat-label" data-en="Release Date" data-tr="Çıkış Tarihi" data-jp="リリース日" data-ru="Дата релиза">Release Date</span>
-          </div>
-          <div class="media-stat">
-            <span class="media-stat-num" data-en="Soon" data-tr="Yakında" data-jp="近日" data-ru="Скоро">Soon</span>
-            <span class="media-stat-label" data-en="Languages" data-tr="Diller" data-jp="対応言語" data-ru="Языки">Languages</span>
-          </div>
-          <div class="media-stat">
-            <span class="media-stat-num">PC</span>
-            <span class="media-stat-label" data-en="Platform" data-tr="Platform" data-jp="プラットフォーム" data-ru="Платформа">Platform</span>
-          </div>
-        </div>
+        <% }); %>
       </div>
-      <div class="feature-info">
-        <h3 class="feature-name"><%= mainGame.title %></h3>
-        <div class="feature-badges">
-          <span class="badge badge-status game-status game-status-en"><%= mainGame.statusEN %></span>
-          <span class="badge badge-status-tr game-status-tr" style="display:none"><%= mainGame.statusTR %></span>
-          <span class="badge badge-status-jp game-status-jp" style="display:none"><%= mainGame.statusJP %></span>
-          <span class="badge badge-status-ru game-status-ru" style="display:none"><%= mainGame.statusRU %></span>
-          <span class="badge"><%= mainGame.tag %></span>
-          <span class="badge" data-en="Multiplayer" data-tr="Çok Oyunculu" data-jp="マルチプレイ" data-ru="Мультиплеер">Multiplayer</span>
-        </div>
-        <p class="feature-desc game-desc game-desc-en"><%= mainGame.fullDescEN %></p>
-        <p class="feature-desc game-desc game-desc-tr" style="display:none"><%= mainGame.fullDescTR %></p>
-        <p class="feature-desc game-desc game-desc-jp" style="display:none"><%= mainGame.fullDescJP %></p>
-        <p class="feature-desc game-desc game-desc-ru" style="display:none"><%= mainGame.fullDescRU %></p>
-        <div class="feature-features">
-          <span class="feature-chip">
-            <span class="chip-icon">👥</span>
-            <span data-en="Multiplayer" data-tr="Çok Oyunculu" data-jp="マルチプレイ" data-ru="Мультиплеер">Multiplayer</span>
-          </span>
-          <span class="feature-chip">
-            <span class="chip-icon">🎉</span>
-            <span data-en="Party Game" data-tr="Parti Oyunu" data-jp="パーティーゲーム" data-ru="Партийная игра">Party Game</span>
-          </span>
-          <span class="feature-chip">
-            <span class="chip-icon">😱</span>
-            <span data-en="Horror & Fun" data-tr="Korku & Eğlence" data-jp="ホラー＆楽しさ" data-ru="Ужас и веселье">Horror & Fun</span>
-          </span>
-          <span class="feature-chip">
-            <span class="chip-icon">🤝</span>
-            <span data-en="Teamwork" data-tr="Takım Çalışması" data-jp="チームワーク" data-ru="Командная работа">Teamwork</span>
-          </span>
-          <span class="feature-chip">
-            <span class="chip-icon">🗺️</span>
-            <span data-en="Challenging & Eerie Maps" data-tr="Zorlayıcı ve Ürpertici Haritalar" data-jp="難関で不気味なマップ" data-ru="Сложные и жуткие карты">Challenging & Eerie Maps</span>
-          </span>
-        </div>
-        <div class="feature-actions">
-          <a href="/games/<%= mainGame.id %>" class="btn btn-primary">
-            <span data-en="Learn More" data-tr="Daha Fazla" data-jp="詳細を見る" data-ru="Подробнее">Learn More</span>
-          </a>
-          <a href="<%= mainGame.trailer %>" target="_blank" class="btn btn-ghost">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            <span data-en="Watch Trailer" data-tr="Fragmanı İzle" data-jp="予告編を見る" data-ru="Смотреть трейлер">Watch Trailer</span>
-          </a>
-        </div>
-      </div>
+      <button class="carousel-arrow carousel-prev" id="gamePrev" aria-label="Previous">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel-arrow carousel-next" id="gameNext" aria-label="Next">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div class="carousel-dots" id="gameDots">
+      <% games.forEach(function(game, i) { %>
+      <span class="carousel-dot <%= i === 0 ? 'active' : '' %>" data-slide="<%= i %>"></span>
+      <% }); %>
     </div>
     <% } else { %>
     <div class="feature-empty">
