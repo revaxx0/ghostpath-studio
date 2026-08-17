@@ -388,7 +388,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Game carousel
 (() => {
   const track = document.getElementById('gameTrack');
-  const prevBtn = document.getElementById('gamePrev');
   const nextBtn = document.getElementById('gameNext');
   const dotsWrap = document.getElementById('gameDots');
   if (!track) return;
@@ -409,7 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
     autoTimer = setInterval(() => goTo(current + 1), 6000);
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', () => { playClick(); goTo(current - 1); resetAuto(); });
   if (nextBtn) nextBtn.addEventListener('click', () => { playClick(); goTo(current + 1); resetAuto(); });
 
   dots.forEach(d => {
