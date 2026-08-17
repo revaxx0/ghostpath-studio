@@ -1412,8 +1412,8 @@ body.nav-open .nav-menu {
   transform: translateY(-50%) scale(1.08);
 }
 
-.carousel-prev { left: 12px; }
-.carousel-next { right: 12px; }
+.carousel-prev { left: 4px; }
+.carousel-next { right: 4px; }
 
 .carousel-dots {
   display: flex;
