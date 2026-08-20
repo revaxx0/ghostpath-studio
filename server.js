@@ -11,6 +11,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Ensure all responses use UTF-8 charset
+app.use((req, res, next) => {
+  res.set('charset', 'utf-8');
+  next();
+});
+
 // ==================== SECURITY ====================
 
 // Content-Security-Policy
@@ -185,6 +191,7 @@ app.get('/news', (req, res) => {
 });
 
 app.get('/api/news', (req, res) => {
+  res.set('Content-Type', 'application/json; charset=utf-8');
   res.json(news.map((item, i) => ({
     id: item.id || i,
     date: item.date,
@@ -203,6 +210,7 @@ app.get('/api/news', (req, res) => {
 app.get('/api/news/:id', (req, res) => {
   const item = news.find(n => String(n.id) === req.params.id);
   if (!item) return res.status(404).json({ error: 'Not found' });
+  res.set('Content-Type', 'application/json; charset=utf-8');
   res.json({
     id: item.id,
     date: item.date,

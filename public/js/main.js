@@ -449,6 +449,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const SEEN_KEY = 'ghostpath-seen-notifs';
   let newsItems = [];
 
+  const emptyTexts = {
+    en: 'No new notifications',
+    tr: 'Yeni bildirim yok',
+    jp: '新しい通知はありません',
+    ru: 'Нет новых уведомлений'
+  };
+
   function getSeen() {
     try { return JSON.parse(localStorage.getItem(SEEN_KEY)) || []; } catch (e) { return []; }
   }
@@ -467,8 +474,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderList() {
     const seen = getSeen();
+    const lang = currentLang || 'en';
     if (newsItems.length === 0) {
-      list.innerHTML = '<div class="notif-empty">No new notifications</div>';
+      list.innerHTML = '<div class="notif-empty">' + (emptyTexts[lang] || emptyTexts.en) + '</div>';
       return;
     }
     list.innerHTML = newsItems.map(n => {
@@ -536,6 +544,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentItem = null;
 
+  const failTexts = {
+    en: 'Failed to load.',
+    tr: 'Yüklenemedi.',
+    jp: '読み込みに失敗しました。',
+    ru: 'Не удалось загрузить.'
+  };
+  const loadingTexts = {
+    en: 'Loading...',
+    tr: 'Yükleniyor...',
+    jp: '読み込み中...',
+    ru: 'Загрузка...'
+  };
+
   function close() {
     modal.classList.remove('open');
     document.body.style.overflow = '';
@@ -566,7 +587,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function openModal(id) {
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
-    container.innerHTML = '<div class="news-modal-loading">Loading...</div>';
+    const lang = currentLang || 'en';
+    container.innerHTML = '<div class="news-modal-loading">' + (loadingTexts[lang] || loadingTexts.en) + '</div>';
 
     fetch('/api/news/' + id)
       .then(r => { if (!r.ok) throw new Error(); return r.json(); })
@@ -575,7 +597,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderModalContent(item);
       })
       .catch(() => {
-        container.innerHTML = '<div class="news-modal-loading">Failed to load.</div>';
+        container.innerHTML = '<div class="news-modal-loading">' + (failTexts[lang] || failTexts.en) + '</div>';
       });
   }
 
