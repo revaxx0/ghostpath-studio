@@ -151,7 +151,21 @@ const games = [
   }
 ];
 
-const news = [];
+const news = [
+  {
+    id: 'welcome-001',
+    date: '2026-08-20',
+    tag: 'Announcement',
+    titleEN: 'Welcome to GhostPath Studio',
+    titleTR: 'GhostPath Studio\'ya Hoş Geldiniz',
+    titleJP: 'GhostPath Studioへようこそ',
+    titleRU: 'Добро пожаловать в GhostPath Studio',
+    descEN: 'We are an indie game development studio driven by passion, creativity, and the belief that every shadow tells a story. This website was built with our own hands to share our journey with you. We create atmospheric horror experiences where fear meets emotion. If you believe in indie spirit and raw, heartfelt game development — support us, follow us, and walk the path with us.',
+    descTR: 'Tutku, yaratıcılık ve her gölgenin bir hikaye anlattığına dair inançla hareket eden bağımsız bir oyun geliştirme stüdyosuyuz. Bu web sitesini sizinle yolculuğumuzu paylaşmak için kendi ellerimizle inşa ettik. Korkunun duyguyla buluştuğu atmosferik horror deneyimleri yaratıyoruz. Bağımsız ruha ve içten, samimi oyun geliştirme sürecine inanıyorsanız bizi destekleyin, takip edin ve bu yolda bizimle yürüyün.',
+    descJP: '情熱、創造力、そしてすべての影が物語を語ると信じる私たちが運営するインディーゲーム開発スタジオです。このウェブサイトは、皆様と私たちの歩みを分かち合うために、自らの手で作り上げました。恐怖と感情が融合するアトモスフェアリックなホラーエクスペリエンスを創造しています。インディースピリットと心のこもったゲーム開発を信じる方は、私たちを応援し、フォローし、共にこの道を歩んでください。',
+    descRU: 'Мы — студия инди-разработки игр, движимая страстью, творчеством и верой в то, что каждая тень рассказывает свою историю. Этот сайт создан нашими собственными руками, чтобы поделиться с вами нашим путём. Мы создаём атмосферные хоррор-переживания, где страх встречается с эмоцией. Если вы верите в инди-дух и искреннюю, heartfelt разработку игр — поддержите нас, следите за нами и идите этим путём вместе с нами.'
+  }
+];
 
 app.get('/', (req, res) => {
   res.render('index', {
