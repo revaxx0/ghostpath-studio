@@ -46,6 +46,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Language switcher (EN / TR / JP / RU)
 const langs = ['en', 'tr', 'jp', 'ru'];
 let currentLang = 'en';
+const langCallbacks = [];
 
 function setLang(lang, persist) {
   currentLang = lang;
@@ -79,6 +80,8 @@ function setLang(lang, persist) {
   document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active-lang'));
 
   document.body.classList.toggle('lang-jp-active', lang === 'jp');
+
+  langCallbacks.forEach(fn => fn(lang));
 }
 
 try {
@@ -519,6 +522,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(r => r.json())
     .then(data => { newsItems = data; updateBadge(); })
     .catch(() => {});
+
+  langCallbacks.push(() => { if (dropdown.classList.contains('open')) renderList(); });
 })();
 
 // News modal (full-screen blog)
@@ -529,9 +534,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('newsModalContent');
   if (!modal) return;
 
+  let currentItem = null;
+
   function close() {
     modal.classList.remove('open');
     document.body.style.overflow = '';
+    currentItem = null;
+  }
+
+  function renderModalContent(item) {
+    const lang = currentLang || 'en';
+    const tag = item.tag || 'News';
+    const title = item['title' + lang.toUpperCase()] || item.titleEN || '';
+    const desc = item['desc' + lang.toUpperCase()] || item.descEN || '';
+    const paragraphs = desc.split('\n').filter(p => p.trim()).map(p => '<p>' + p + '</p>').join('');
+
+    container.innerHTML =
+      '<span class="news-modal-tag">' + tag + '</span>' +
+      '<h1 class="news-modal-title">' + title + '</h1>' +
+      '<div class="news-modal-date">' + (item.date || '') + '</div>' +
+      '<div class="news-modal-body">' + paragraphs + '</div>' +
+      '<div class="news-modal-divider"></div>' +
+      '<button class="news-modal-back" id="newsModalBack">' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>' +
+        '<span data-en="Back to News" data-tr="Haberlere Dön" data-jp="ニュースに戻る" data-ru="К новостям">Back to News</span>' +
+      '</button>';
+
+    document.getElementById('newsModalBack').addEventListener('click', close);
   }
 
   function openModal(id) {
@@ -542,26 +571,8 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('/api/news/' + id)
       .then(r => { if (!r.ok) throw new Error(); return r.json(); })
       .then(item => {
-        const lang = currentLang || 'en';
-        const tag = item.tag || 'News';
-        const title = item['title' + lang.toUpperCase()] || item.titleEN || '';
-        const desc = item['desc' + lang.toUpperCase()] || item.descEN || '';
-        const paragraphs = desc.split('\n').filter(p => p.trim()).map(p => '<p>' + p + '</p>').join('');
-
-        container.innerHTML =
-          '<span class="news-modal-tag">' + tag + '</span>' +
-          '<h1 class="news-modal-title">' + title + '</h1>' +
-          '<div class="news-modal-date">' + (item.date || '') + '</div>' +
-          '<div class="news-modal-body">' + paragraphs + '</div>' +
-          '<div class="news-modal-divider"></div>' +
-          '<button class="news-modal-back" id="newsModalBack">' +
-            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>' +
-            '<span data-en="Back to News" data-tr="Haberlere Dön" data-jp="ニュースに戻る" data-ru="К новостям">Back to News</span>' +
-          '</button>';
-
-        document.getElementById('newsModalBack').addEventListener('click', () => {
-          close();
-        });
+        currentItem = item;
+        renderModalContent(item);
       })
       .catch(() => {
         container.innerHTML = '<div class="news-modal-loading">Failed to load.</div>';
@@ -573,6 +584,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 
   window.openNewsModal = openModal;
+
+  langCallbacks.push(() => {
+    if (modal.classList.contains('open') && currentItem) {
+      renderModalContent(currentItem);
+    }
+  });
 
   document.addEventListener('click', e => {
     const notifItem = e.target.closest('.notif-item[data-id]');
