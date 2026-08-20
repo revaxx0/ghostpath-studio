@@ -200,6 +200,24 @@ app.get('/api/news', (req, res) => {
   })));
 });
 
+app.get('/api/news/:id', (req, res) => {
+  const item = news.find(n => String(n.id) === req.params.id);
+  if (!item) return res.status(404).json({ error: 'Not found' });
+  res.json({
+    id: item.id,
+    date: item.date,
+    tag: item.tag,
+    titleEN: item.titleEN,
+    titleTR: item.titleTR,
+    titleJP: item.titleJP,
+    titleRU: item.titleRU,
+    descEN: item.descEN,
+    descTR: item.descTR,
+    descJP: item.descJP,
+    descRU: item.descRU
+  });
+});
+
 app.get('/games/:id', (req, res) => {
   const game = games.find(g => g.id === req.params.id);
   if (!game) return res.redirect('/');

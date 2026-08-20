@@ -520,3 +520,75 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => { newsItems = data; updateBadge(); })
     .catch(() => {});
 })();
+
+// News modal (full-screen blog)
+(() => {
+  const modal = document.getElementById('newsModal');
+  const overlay = document.getElementById('newsModalOverlay');
+  const closeBtn = document.getElementById('newsModalClose');
+  const container = document.getElementById('newsModalContent');
+  if (!modal) return;
+
+  function close() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function openModal(id) {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    container.innerHTML = '<div class="news-modal-loading">Loading...</div>';
+
+    fetch('/api/news/' + id)
+      .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+      .then(item => {
+        const lang = currentLang || 'en';
+        const tag = item.tag || 'News';
+        const title = item['title' + lang.toUpperCase()] || item.titleEN || '';
+        const desc = item['desc' + lang.toUpperCase()] || item.descEN || '';
+        const paragraphs = desc.split('\n').filter(p => p.trim()).map(p => '<p>' + p + '</p>').join('');
+
+        container.innerHTML =
+          '<span class="news-modal-tag">' + tag + '</span>' +
+          '<h1 class="news-modal-title">' + title + '</h1>' +
+          '<div class="news-modal-date">' + (item.date || '') + '</div>' +
+          '<div class="news-modal-body">' + paragraphs + '</div>' +
+          '<div class="news-modal-divider"></div>' +
+          '<button class="news-modal-back" id="newsModalBack">' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>' +
+            '<span data-en="Back to News" data-tr="Haberlere Dön" data-jp="ニュースに戻る" data-ru="К новостям">Back to News</span>' +
+          '</button>';
+
+        document.getElementById('newsModalBack').addEventListener('click', () => {
+          close();
+        });
+      })
+      .catch(() => {
+        container.innerHTML = '<div class="news-modal-loading">Failed to load.</div>';
+      });
+  }
+
+  overlay.addEventListener('click', close);
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+  window.openNewsModal = openModal;
+
+  document.addEventListener('click', e => {
+    const notifItem = e.target.closest('.notif-item[data-id]');
+    if (notifItem) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dropdown = document.getElementById('notifDropdown');
+      if (dropdown) dropdown.classList.remove('open');
+      openModal(notifItem.dataset.id);
+      return;
+    }
+
+    const readLink = e.target.closest('.news-link[data-id]');
+    if (readLink) {
+      e.preventDefault();
+      openModal(readLink.dataset.id);
+    }
+  });
+})();

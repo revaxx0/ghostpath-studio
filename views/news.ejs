@@ -30,7 +30,7 @@
             <td><span class="news-tag"><%= item.tag %></span></td>
             <td class="td-title" data-en="<%= item.titleEN %>" data-tr="<%= item.titleTR %>" data-jp="<%= item.titleJP %>"><%= item.titleEN %></td>
             <td class="td-desc" data-en="<%= item.descEN %>" data-tr="<%= item.descTR %>" data-jp="<%= item.descJP %>"><%= item.descEN %></td>
-            <td><a href="#" class="news-link" data-en="Read →" data-tr="Oku →" data-jp="読む →" data-ru="Читать →">Read →</a></td>
+            <td><a href="#" class="news-link" data-id="<%= item.id %>" data-en="Read →" data-tr="Oku →" data-jp="読む →" data-ru="Читать →">Read →</a></td>
           </tr>
           <% }) %>
         </tbody>
