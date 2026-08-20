@@ -170,6 +170,22 @@ app.get('/news', (req, res) => {
   });
 });
 
+app.get('/api/news', (req, res) => {
+  res.json(news.map((item, i) => ({
+    id: item.id || i,
+    date: item.date,
+    tag: item.tag,
+    titleEN: item.titleEN,
+    titleTR: item.titleTR,
+    titleJP: item.titleJP,
+    titleRU: item.titleRU,
+    descEN: item.descEN,
+    descTR: item.descTR,
+    descJP: item.descJP,
+    descRU: item.descRU
+  })));
+});
+
 app.get('/games/:id', (req, res) => {
   const game = games.find(g => g.id === req.params.id);
   if (!game) return res.redirect('/');

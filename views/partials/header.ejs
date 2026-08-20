@@ -47,6 +47,21 @@
           <span class="theme-icon-dark">☽</span>
           <span class="theme-icon-light" style="display:none">☀</span>
         </button>
+        <div class="notif-wrap">
+          <button class="notif-bell" id="notifBell" aria-label="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-badge" id="notifBadge" style="display:none">0</span>
+          </button>
+          <div class="notif-dropdown" id="notifDropdown">
+            <div class="notif-header">
+              <span data-en="Notifications" data-tr="Bildirimler" data-jp="通知" data-ru="Уведомления">Notifications</span>
+              <button class="notif-mark-read" id="notifMarkRead" data-en="Mark all read" data-tr="Tümünü okundu işaretle" data-jp="すべて既読にする" data-ru="Отметить всё как прочитанное">Mark all read</button>
+            </div>
+            <div class="notif-list" id="notifList">
+              <div class="notif-empty" data-en="No new notifications" data-tr="Yeni bildirim yok" data-jp="新しい通知はありません" data-ru="Нет новых уведомлений">No new notifications</div>
+            </div>
+          </div>
+        </div>
         <div class="lang-toggle">
           <span class="lang-item lang-en active-lang" data-lang="en">EN</span>
           <span class="lang-sep">|</span>
@@ -82,6 +97,12 @@
         <span class="theme-icon-dark">☽</span>
         <span class="theme-icon-light" style="display:none">☀</span>
       </button>
+      <div class="notif-wrap">
+        <button class="notif-bell" id="notifBellMobile" aria-label="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notif-badge" id="notifBadgeMobile" style="display:none">0</span>
+        </button>
+      </div>
       <div class="lang-toggle">
         <span class="lang-item lang-en active-lang" data-lang="en">EN</span>
         <span class="lang-sep">|</span>

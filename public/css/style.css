@@ -338,6 +338,180 @@ section:not(.hero).visible {
   opacity: 0.6;
 }
 
+/* ===== Notifications ===== */
+.notif-wrap {
+  position: relative;
+}
+
+.notif-bell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--panel-strong);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.notif-bell:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.notif-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 100px;
+  background: linear-gradient(120deg, #c81e1e, #e04a2a);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(200, 30, 30, 0.5);
+  animation: notifPulse 2s ease-in-out infinite;
+}
+
+@keyframes notifPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(200, 30, 30, 0.5); }
+  50% { box-shadow: 0 0 18px rgba(200, 30, 30, 0.8); }
+}
+
+.notif-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 340px;
+  max-height: 420px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.notif-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.notif-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.notif-mark-read {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.notif-mark-read:hover {
+  background: var(--accent-soft);
+}
+
+.notif-list {
+  max-height: 340px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.notif-empty {
+  padding: 32px 18px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.notif-item {
+  display: block;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.notif-item:last-child {
+  border-bottom: none;
+}
+
+.notif-item:hover {
+  background: var(--accent-soft);
+}
+
+.notif-item.unread {
+  border-left: 3px solid var(--accent);
+}
+
+.notif-item-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.notif-item-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.notif-item-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.notif-item-date {
+  font-size: 0.7rem;
+  color: var(--dim);
+  margin-top: 6px;
+  font-family: var(--font-mono);
+}
+
 /* ===== Nav tools & mobile menu ===== */
 html {
   scroll-padding-top: 92px;
@@ -496,6 +670,30 @@ body.nav-open .nav-menu {
 .nav-menu .nav-tools .theme-toggle {
   justify-content: center;
   padding: 14px;
+}
+
+.nav-menu .nav-tools .notif-wrap {
+  position: static;
+}
+
+.nav-menu .nav-tools .notif-bell {
+  width: 100%;
+  border-radius: 12px;
+  padding: 14px;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.nav-menu .nav-tools .notif-dropdown {
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  top: auto;
+  bottom: 10px;
+  width: auto;
+  max-height: 50vh;
+  border-radius: 14px;
 }
 
 .nav-menu .nav-tools .lang-toggle {

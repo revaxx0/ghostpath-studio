@@ -431,3 +431,92 @@ document.addEventListener('DOMContentLoaded', () => {
 
   resetAuto();
 })();
+
+// Notification bell
+(() => {
+  const bell = document.getElementById('notifBell');
+  const bellMobile = document.getElementById('notifBellMobile');
+  const badge = document.getElementById('notifBadge');
+  const badgeMobile = document.getElementById('notifBadgeMobile');
+  const dropdown = document.getElementById('notifDropdown');
+  const list = document.getElementById('notifList');
+  const markRead = document.getElementById('notifMarkRead');
+  if (!bell || !dropdown) return;
+
+  const SEEN_KEY = 'ghostpath-seen-notifs';
+  let newsItems = [];
+
+  function getSeen() {
+    try { return JSON.parse(localStorage.getItem(SEEN_KEY)) || []; } catch (e) { return []; }
+  }
+
+  function setSeen(ids) {
+    try { localStorage.setItem(SEEN_KEY, JSON.stringify(ids)); } catch (e) {}
+  }
+
+  function updateBadge() {
+    const seen = getSeen();
+    const unread = newsItems.filter(n => !seen.includes(String(n.id))).length;
+    const show = unread > 0;
+    if (badge) { badge.style.display = show ? 'flex' : 'none'; badge.textContent = unread; }
+    if (badgeMobile) { badgeMobile.style.display = show ? 'flex' : 'none'; badgeMobile.textContent = unread; }
+  }
+
+  function renderList() {
+    const seen = getSeen();
+    if (newsItems.length === 0) {
+      list.innerHTML = '<div class="notif-empty">No new notifications</div>';
+      return;
+    }
+    list.innerHTML = newsItems.map(n => {
+      const isUnread = !seen.includes(String(n.id));
+      const lang = currentLang || 'en';
+      const title = n['title' + lang.toUpperCase()] || n.titleEN || '';
+      const desc = n['desc' + lang.toUpperCase()] || n.descEN || '';
+      return '<a href="/news" class="notif-item' + (isUnread ? ' unread' : '') + '" data-id="' + n.id + '">' +
+        '<span class="notif-item-tag">' + (n.tag || 'News') + '</span>' +
+        '<div class="notif-item-title">' + title + '</div>' +
+        '<div class="notif-item-desc">' + desc + '</div>' +
+        '<div class="notif-item-date">' + (n.date || '') + '</div>' +
+        '</a>';
+    }).join('');
+
+    list.querySelectorAll('.notif-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const id = el.dataset.id;
+        const seen = getSeen();
+        if (!seen.includes(id)) { seen.push(id); setSeen(seen); }
+        updateBadge();
+      });
+    });
+  }
+
+  function toggleDropdown(e) {
+    e.stopPropagation();
+    const isOpen = dropdown.classList.contains('open');
+    if (!isOpen) renderList();
+    dropdown.classList.toggle('open');
+  }
+
+  bell.addEventListener('click', toggleDropdown);
+  if (bellMobile) bellMobile.addEventListener('click', toggleDropdown);
+
+  document.addEventListener('click', e => {
+    if (!dropdown.contains(e.target) && e.target !== bell && e.target !== bellMobile && !bell.contains(e.target) && !(bellMobile && bellMobile.contains(e.target))) {
+      dropdown.classList.remove('open');
+    }
+  });
+
+  if (markRead) {
+    markRead.addEventListener('click', () => {
+      setSeen(newsItems.map(n => String(n.id)));
+      updateBadge();
+      renderList();
+    });
+  }
+
+  fetch('/api/news')
+    .then(r => r.json())
+    .then(data => { newsItems = data; updateBadge(); })
+    .catch(() => {});
+})();
