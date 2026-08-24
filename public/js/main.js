@@ -278,13 +278,13 @@ document.addEventListener('DOMContentLoaded', () => {
   tick();
 })();
 
-// CRT Easter egg — hold mouse on TV to glitch & swap title
+// CRT Easter egg — hover to trigger glitch & title swap
 (() => {
   const screen = document.querySelector('.crt-screen');
   const title = document.querySelector('.crt-title');
   if (!screen || !title) return;
 
-  const HOLD_THRESHOLD = 1800;
+  const HOLD_THRESHOLD = 1500;
   const SWAP_INTERVAL = 2200;
 
   const titles = [
@@ -296,7 +296,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let swapTimer = null;
   let activeIndex = 0;
   let activated = false;
-  let pointerDown = false;
 
   function startGlitch() {
     activated = true;
@@ -311,7 +310,6 @@ document.addEventListener('DOMContentLoaded', () => {
     holdTimer = null;
     swapTimer = null;
     activated = false;
-    pointerDown = false;
     screen.classList.remove('glitch-intense');
     title.classList.remove('title-swap');
     activeIndex = 0;
@@ -333,26 +331,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => title.classList.remove('title-swap'), 300);
   }
 
-  screen.addEventListener('pointerdown', (e) => {
-    if (e.button && e.button !== 0) return;
-    e.preventDefault();
-    pointerDown = true;
+  screen.addEventListener('mouseenter', () => {
     holdTimer = setTimeout(startGlitch, HOLD_THRESHOLD);
   });
 
-  screen.addEventListener('pointerup', () => stopGlitch());
-  screen.addEventListener('pointercancel', () => stopGlitch());
-  screen.addEventListener('pointerleave', () => stopGlitch());
-
-  screen.addEventListener('contextmenu', (e) => e.preventDefault());
-
-  screen.addEventListener('touchstart', () => {
-    pointerDown = true;
-    holdTimer = setTimeout(startGlitch, HOLD_THRESHOLD);
-  }, { passive: true });
-
-  screen.addEventListener('touchend', () => stopGlitch());
-  screen.addEventListener('touchcancel', () => stopGlitch());
+  screen.addEventListener('mouseleave', stopGlitch);
 })();
 
 // Scroll reveal animations
