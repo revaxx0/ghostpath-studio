@@ -278,46 +278,31 @@ document.addEventListener('DOMContentLoaded', () => {
   tick();
 })();
 
-// CRT Easter egg — hover to trigger glitch & title swap
+// CRT Easter egg — hover to trigger brief glitch & title swap
 (() => {
   const screen = document.querySelector('.crt-screen');
   const title = document.querySelector('.crt-title');
   if (!screen || !title) return;
 
-  const HOLD_THRESHOLD = 1500;
-  const SWAP_INTERVAL = 2200;
+  const INITIAL_DELAY = 1500;
+  const GLITCH_DURATION = 800;
+  const SWAP_INTERVAL = 2800;
 
   const titles = [
     { en: 'MAWBOUND', tr: 'MAWBOUND', jp: 'MAWBOUND', ru: 'MAWBOUND' },
     { en: 'GhostSeries: Stay Inside', tr: 'GhostSeries: Stay Inside', jp: 'GhostSeries: Stay Inside', ru: 'GhostSeries: Stay Inside' }
   ];
 
-  let holdTimer = null;
+  let initialTimer = null;
   let swapTimer = null;
+  let glitchTimer = null;
   let activeIndex = 0;
   let activated = false;
 
-  function startGlitch() {
-    activated = true;
+  function triggerGlitch() {
     screen.classList.add('glitch-intense');
-    swapTitle();
-    swapTimer = setInterval(swapTitle, SWAP_INTERVAL);
-  }
+    setTimeout(() => screen.classList.remove('glitch-intense'), GLITCH_DURATION);
 
-  function stopGlitch() {
-    clearTimeout(holdTimer);
-    clearInterval(swapTimer);
-    holdTimer = null;
-    swapTimer = null;
-    activated = false;
-    screen.classList.remove('glitch-intense');
-    title.classList.remove('title-swap');
-    activeIndex = 0;
-    title.textContent = 'MAWBOUND';
-    title.setAttribute('data-text', 'MAWBOUND');
-  }
-
-  function swapTitle() {
     activeIndex = (activeIndex + 1) % titles.length;
     const t = titles[activeIndex];
     const lang = (typeof currentLang !== 'undefined' && currentLang) || 'en';
@@ -331,11 +316,32 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => title.classList.remove('title-swap'), 300);
   }
 
+  function startCycle() {
+    activated = true;
+    triggerGlitch();
+    swapTimer = setInterval(triggerGlitch, SWAP_INTERVAL);
+  }
+
+  function stopCycle() {
+    clearTimeout(initialTimer);
+    clearTimeout(glitchTimer);
+    clearInterval(swapTimer);
+    initialTimer = null;
+    swapTimer = null;
+    glitchTimer = null;
+    activated = false;
+    screen.classList.remove('glitch-intense');
+    title.classList.remove('title-swap');
+    activeIndex = 0;
+    title.textContent = 'MAWBOUND';
+    title.setAttribute('data-text', 'MAWBOUND');
+  }
+
   screen.addEventListener('mouseenter', () => {
-    holdTimer = setTimeout(startGlitch, HOLD_THRESHOLD);
+    initialTimer = setTimeout(startCycle, INITIAL_DELAY);
   });
 
-  screen.addEventListener('mouseleave', stopGlitch);
+  screen.addEventListener('mouseleave', stopCycle);
 })();
 
 // Scroll reveal animations
