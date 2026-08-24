@@ -312,6 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       title.textContent = text;
       title.setAttribute('data-text', text);
+      title.classList.toggle('title-long', text.length > 10);
     }, 120);
     setTimeout(() => title.classList.remove('title-swap'), 300);
   }
@@ -332,6 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activated = false;
     screen.classList.remove('glitch-intense');
     title.classList.remove('title-swap');
+    title.classList.remove('title-long');
     activeIndex = 0;
     title.textContent = 'MAWBOUND';
     title.setAttribute('data-text', 'MAWBOUND');
