@@ -1257,10 +1257,11 @@ body.nav-open .nav-menu {
   transform: translate(-2%, -50%);
   margin: 0;
   text-align: center;
+  white-space: nowrap;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(1.7rem, 7.5vw, 3.4rem);
-  letter-spacing: 5px;
+  font-size: clamp(1.1rem, 5vw, 2.2rem);
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: #fff;
   text-shadow: 0 0 26px var(--glow), 0 0 60px rgba(255, 59, 59, 0.35);
@@ -2581,7 +2582,7 @@ body.lang-jp-active p {
   }
 
   .crt-title {
-    letter-spacing: 3px;
+    letter-spacing: 2px;
   }
 
   .crt-title,
@@ -2702,7 +2703,7 @@ body.lang-jp-active p {
   }
 
   .crt-title {
-    font-size: clamp(1.5rem, 8vw, 2rem);
+    font-size: clamp(0.85rem, 5vw, 1.4rem);
     letter-spacing: 2px;
   }
 
