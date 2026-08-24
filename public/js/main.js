@@ -278,6 +278,75 @@ document.addEventListener('DOMContentLoaded', () => {
   tick();
 })();
 
+// CRT Easter egg — hold mouse on TV to glitch & swap title
+(() => {
+  const screen = document.querySelector('.crt-screen');
+  const title = document.querySelector('.crt-title');
+  if (!screen || !title) return;
+
+  const HOLD_THRESHOLD = 1800;
+  const SWAP_INTERVAL = 2200;
+
+  const titles = [
+    { en: 'MAWBOUND', tr: 'MAWBOUND', jp: 'MAWBOUND', ru: 'MAWBOUND' },
+    { en: 'GhostSeries: Stay Inside', tr: 'GhostSeries: Stay Inside', jp: 'GhostSeries: Stay Inside', ru: 'GhostSeries: Stay Inside' }
+  ];
+
+  let holdTimer = null;
+  let swapTimer = null;
+  let activeIndex = 0;
+  let activated = false;
+
+  function startGlitch() {
+    activated = true;
+    screen.classList.add('glitch-intense');
+    swapTitle();
+    swapTimer = setInterval(swapTitle, SWAP_INTERVAL);
+  }
+
+  function stopGlitch() {
+    clearTimeout(holdTimer);
+    clearInterval(swapTimer);
+    holdTimer = null;
+    swapTimer = null;
+    activated = false;
+    screen.classList.remove('glitch-intense');
+    title.classList.remove('title-swap');
+    activeIndex = 0;
+    title.textContent = 'MAWBOUND';
+    title.setAttribute('data-text', 'MAWBOUND');
+  }
+
+  function swapTitle() {
+    activeIndex = (activeIndex + 1) % titles.length;
+    const t = titles[activeIndex];
+    const lang = (typeof currentLang !== 'undefined' && currentLang) || 'en';
+    const text = t[lang] || t.en;
+
+    title.classList.add('title-swap');
+    setTimeout(() => {
+      title.textContent = text;
+      title.setAttribute('data-text', text);
+    }, 120);
+    setTimeout(() => title.classList.remove('title-swap'), 300);
+  }
+
+  screen.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    holdTimer = setTimeout(startGlitch, HOLD_THRESHOLD);
+  });
+
+  screen.addEventListener('mouseup', stopGlitch);
+  screen.addEventListener('mouseleave', () => { if (activated) stopGlitch(); });
+
+  screen.addEventListener('touchstart', (e) => {
+    holdTimer = setTimeout(startGlitch, HOLD_THRESHOLD);
+  }, { passive: true });
+
+  screen.addEventListener('touchend', stopGlitch);
+  screen.addEventListener('touchcancel', stopGlitch);
+})();
+
 // Scroll reveal animations
 (() => {
   const sections = document.querySelectorAll('section:not(.hero)');

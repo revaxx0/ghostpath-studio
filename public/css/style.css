@@ -944,6 +944,70 @@ body.nav-open .nav-menu {
   100% { clip-path: inset(45% 0 30% 0); transform: translate(4px, -2px); }
 }
 
+/* Intense glitch for CRT hold easter egg */
+.crt-screen.glitch-intense {
+  animation: crtFlicker 0.15s steps(1) infinite;
+}
+
+.crt-screen.glitch-intense .crt-title {
+  opacity: 1 !important;
+  animation: titleGlitch 0.2s steps(1) infinite;
+  text-shadow: 0 0 30px #ff3b3b, 0 0 60px #ff3b3b, 0 0 100px rgba(255, 59, 59, 0.5);
+}
+
+.crt-screen.glitch-intense .crt-title::before {
+  opacity: 0.9 !important;
+  color: #00f0ff;
+  animation: glitchA 0.12s steps(2) infinite;
+}
+
+.crt-screen.glitch-intense .crt-title::after {
+  opacity: 0.9 !important;
+  color: #ff3b3b;
+  animation: glitchB 0.1s steps(2) infinite;
+}
+
+.crt-screen.glitch-intense .crt-subtitle {
+  opacity: 0;
+}
+
+.crt-screen.glitch-intense .crt-hint {
+  opacity: 0;
+}
+
+@keyframes crtFlicker {
+  0% { filter: brightness(1.6) contrast(1.4) hue-rotate(10deg); }
+  25% { filter: brightness(0.4) contrast(2) hue-rotate(-20deg); }
+  50% { filter: brightness(1.8) contrast(0.8) hue-rotate(5deg); }
+  75% { filter: brightness(0.3) contrast(1.8) hue-rotate(-10deg); }
+  100% { filter: brightness(1.4) contrast(1.2) hue-rotate(15deg); }
+}
+
+@keyframes titleGlitch {
+  0% { transform: translate(-2%, -50%) skewX(0deg); }
+  10% { transform: translate(8px, calc(-50% + 3px)) skewX(-5deg); }
+  20% { transform: translate(-6px, calc(-50% - 2px)) skewX(3deg); }
+  30% { transform: translate(2px, -50%) skewX(0deg); }
+  40% { transform: translate(-4px, calc(-50% + 1px)) skewX(-2deg); }
+  50% { transform: translate(5px, calc(-50% - 3px)) skewX(4deg); }
+  60% { transform: translate(-3px, -50%) skewX(0deg); }
+  70% { transform: translate(6px, calc(-50% + 2px)) skewX(-3deg); }
+  80% { transform: translate(-5px, calc(-50% - 1px)) skewX(2deg); }
+  90% { transform: translate(3px, -50%) skewX(0deg); }
+  100% { transform: translate(-2%, -50%) skewX(0deg); }
+}
+
+.crt-title.title-swap {
+  animation: titleSwap 0.3s ease-out;
+}
+
+@keyframes titleSwap {
+  0% { opacity: 1; transform: translate(-2%, -50%) scale(1); filter: blur(0); }
+  40% { opacity: 0; transform: translate(-2%, -50%) scale(1.05); filter: blur(6px); }
+  60% { opacity: 0; transform: translate(-2%, -50%) scale(0.95); filter: blur(6px); }
+  100% { opacity: 1; transform: translate(-2%, -50%) scale(1); filter: blur(0); }
+}
+
 .hero-title-tag {
   display: inline-block;
   margin-top: 22px;
