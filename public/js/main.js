@@ -296,6 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let swapTimer = null;
   let activeIndex = 0;
   let activated = false;
+  let pointerDown = false;
 
   function startGlitch() {
     activated = true;
@@ -310,6 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
     holdTimer = null;
     swapTimer = null;
     activated = false;
+    pointerDown = false;
     screen.classList.remove('glitch-intense');
     title.classList.remove('title-swap');
     activeIndex = 0;
@@ -331,20 +333,26 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => title.classList.remove('title-swap'), 300);
   }
 
-  screen.addEventListener('mousedown', (e) => {
+  screen.addEventListener('pointerdown', (e) => {
+    if (e.button && e.button !== 0) return;
     e.preventDefault();
+    pointerDown = true;
     holdTimer = setTimeout(startGlitch, HOLD_THRESHOLD);
   });
 
-  screen.addEventListener('mouseup', stopGlitch);
-  screen.addEventListener('mouseleave', () => { if (activated) stopGlitch(); });
+  screen.addEventListener('pointerup', () => stopGlitch());
+  screen.addEventListener('pointercancel', () => stopGlitch());
+  screen.addEventListener('pointerleave', () => stopGlitch());
 
-  screen.addEventListener('touchstart', (e) => {
+  screen.addEventListener('contextmenu', (e) => e.preventDefault());
+
+  screen.addEventListener('touchstart', () => {
+    pointerDown = true;
     holdTimer = setTimeout(startGlitch, HOLD_THRESHOLD);
   }, { passive: true });
 
-  screen.addEventListener('touchend', stopGlitch);
-  screen.addEventListener('touchcancel', stopGlitch);
+  screen.addEventListener('touchend', () => stopGlitch());
+  screen.addEventListener('touchcancel', () => stopGlitch());
 })();
 
 // Scroll reveal animations
