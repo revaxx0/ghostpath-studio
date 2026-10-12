@@ -69,8 +69,6 @@
                 <img src="<%= game.image %>" alt="<%= game.title %>">
                 <% if (game.id === 'mawbound' || game.id === 'ghostseries-stay-inside') { %>
                   <div class="soon-blur"><span class="soon-text" data-en="Soon" data-tr="Yakında" data-jp="近日公開" data-ru="Скоро">Soon</span></div>
-                <% } else { %>
-                  <div class="soon-overlay"><span class="soon-text" data-en="Soon" data-tr="Yakında" data-jp="近日公開" data-ru="Скоро">Soon</span></div>
                 <% } %>
                 <div class="feature-image-frame"></div>
                 <span class="feature-status"><%= game.tag %></span>
