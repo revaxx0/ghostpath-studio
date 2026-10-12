@@ -67,6 +67,11 @@
             <div class="feature-media tilt">
               <div class="feature-image">
                 <img src="<%= game.image %>" alt="<%= game.title %>">
+                <% if (game.id === 'mawbound' || game.id === 'ghostseries-stay-inside') { %>
+                  <div class="soon-blur"><span class="soon-text" data-en="Soon" data-tr="Yakında" data-jp="近日公開" data-ru="Скоро">Soon</span></div>
+                <% } else { %>
+                  <div class="soon-overlay"><span class="soon-text" data-en="Soon" data-tr="Yakında" data-jp="近日公開" data-ru="Скоро">Soon</span></div>
+                <% } %>
                 <div class="feature-image-frame"></div>
                 <span class="feature-status"><%= game.tag %></span>
               </div>
@@ -110,7 +115,7 @@
                 <% }); %>
               </div>
               <div class="feature-actions">
-                <a href="/games/<%= game.id %>" class="btn btn-primary">
+                <a href="/games/<%= game.id %>" class="btn btn-primary <%= (game.id === 'mawbound' || game.id === 'ghostseries-stay-inside') ? 'btn-locked' : '' %>" data-game-link="<%= game.id %>">
                   <span data-en="Learn More" data-tr="Daha Fazla" data-jp="詳細を見る" data-ru="Подробнее">Learn More</span>
                 </a>
                 <a href="<%= game.trailer %>" target="_blank" class="btn btn-ghost">

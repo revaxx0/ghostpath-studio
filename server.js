@@ -154,6 +154,36 @@ const games = [
       { icon: '📖', en: 'Story-driven', tr: 'Hikaye Odaklı', jp: 'ストーリー重視', ru: 'Сюжетная' },
       { icon: '🌫️', en: 'Atmospheric', tr: 'Atmosferik', jp: '雰囲気重視', ru: 'Атмосферная' }
     ]
+  },
+  {
+    id: 'lowpressure',
+    title: 'LowPressure',
+    tag: 'Multiplayer',
+    descEN: 'Coming soon.',
+    descTR: 'Çok yakında.',
+    descJP: '近日公開。',
+    descRU: 'Скоро.',
+    fullDescEN: 'Coming soon.',
+    fullDescTR: 'Çok yakında.',
+    fullDescJP: '近日公開。',
+    fullDescRU: 'Скоро.',
+    releaseDate: 'TBA',
+    image: '/images/GhostPath.jpg',
+    trailer: 'https://www.youtube.com/watch?v=',
+    statusEN: 'Coming Soon',
+    statusTR: 'Çok Yakında',
+    statusJP: '近日公開',
+    statusRU: 'Скоро',
+    extraBadges: [
+      { en: 'Multiplayer', tr: 'Çok Oyunculu', jp: 'マルチプレイ', ru: 'Мультиплеер' },
+      { en: 'Social Deduction', tr: 'Sosyal Çıkarım', jp: '社会的推理', ru: 'Социальная дедукция' }
+    ],
+    chips: [
+      { icon: '👥', en: 'Multiplayer', tr: 'Çok Oyunculu', jp: 'マルチプレイ', ru: 'Мультиплеер' },
+      { icon: '🧠', en: 'Social Deduction', tr: 'Sosyal Çıkarım', jp: '社会的推理', ru: 'Социальная дедукция' },
+      { icon: '🌊', en: 'Underwater', tr: 'Deniz Altı', jp: '水中', ru: 'Подводный' },
+      { icon: '😱', en: 'Tension', tr: 'Gerilim', jp: '緊張感', ru: 'Напряжение' }
+    ]
   }
 ];
 
@@ -227,13 +257,14 @@ app.get('/api/news/:id', (req, res) => {
 });
 
 app.get('/games/:id', (req, res) => {
-  const game = games.find(g => g.id === req.params.id);
-  if (!game) return res.redirect('/');
-  res.render('game', {
-    title: game.title + ' — GhostPath Studio',
-    currentPage: 'games',
-    game
-  });
+    const game = games.find(g => g.id === req.params.id);
+    if (!game) return res.redirect('/');
+    res.render('game', {
+      title: game.title + ' — GhostPath Studio',
+      currentPage: 'games',
+      game
+    });
+});
 });
 
 // Generic error handler: never leak internals

@@ -485,6 +485,17 @@ document.addEventListener('DOMContentLoaded', () => {
     d.addEventListener('click', () => { playClick(); goTo(parseInt(d.dataset.slide)); resetAuto(); });
   });
 
+  // Prevent navigation for locked games (first two)
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[data-game-link]');
+    if (link) {
+      const id = link.dataset.gameLink;
+      if (id === 'mawbound' || id === 'ghostseries-stay-inside') {
+        e.preventDefault();
+      }
+    }
+  });
+
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft') { goTo(current - 1); resetAuto(); }
     if (e.key === 'ArrowRight') { goTo(current + 1); resetAuto(); }
