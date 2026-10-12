@@ -265,7 +265,6 @@ app.get('/games/:id', (req, res) => {
       game
     });
 });
-});
 
 // Generic error handler: never leak internals
 app.use((err, req, res, next) => {
