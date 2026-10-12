@@ -278,47 +278,25 @@ document.addEventListener('DOMContentLoaded', () => {
   tick();
 })();
 
-// CRT Easter egg — hover to trigger brief glitch & title swap
+// CRT Easter egg — hover to trigger brief glitch
 (() => {
   const screen = document.querySelector('.crt-screen');
-  const title = document.querySelector('.crt-title');
-  if (!screen || !title) return;
+  if (!screen) return;
 
   const INITIAL_DELAY = 1500;
   const GLITCH_DURATION = 800;
   const SWAP_INTERVAL = 2800;
 
-  const titles = [
-    { en: 'MAWBOUND', tr: 'MAWBOUND', jp: 'MAWBOUND', ru: 'MAWBOUND' },
-    { en: 'GhostSeries: Stay Inside', tr: 'GhostSeries: Stay Inside', jp: 'GhostSeries: Stay Inside', ru: 'GhostSeries: Stay Inside' }
-  ];
-
   let initialTimer = null;
-  let swapTimer = null;
   let glitchTimer = null;
-  let activeIndex = 0;
-  let activated = false;
+  let swapTimer = null;
 
   function triggerGlitch() {
     screen.classList.add('glitch-intense');
-    setTimeout(() => screen.classList.remove('glitch-intense'), GLITCH_DURATION);
-
-    activeIndex = (activeIndex + 1) % titles.length;
-    const t = titles[activeIndex];
-    const lang = (typeof currentLang !== 'undefined' && currentLang) || 'en';
-    const text = t[lang] || t.en;
-
-    title.classList.add('title-swap');
-    setTimeout(() => {
-      title.textContent = text;
-      title.setAttribute('data-text', text);
-      title.classList.toggle('title-long', text.length > 10);
-    }, 120);
-    setTimeout(() => title.classList.remove('title-swap'), 300);
+    glitchTimer = setTimeout(() => screen.classList.remove('glitch-intense'), GLITCH_DURATION);
   }
 
   function startCycle() {
-    activated = true;
     triggerGlitch();
     swapTimer = setInterval(triggerGlitch, SWAP_INTERVAL);
   }
@@ -328,15 +306,9 @@ document.addEventListener('DOMContentLoaded', () => {
     clearTimeout(glitchTimer);
     clearInterval(swapTimer);
     initialTimer = null;
-    swapTimer = null;
     glitchTimer = null;
-    activated = false;
+    swapTimer = null;
     screen.classList.remove('glitch-intense');
-    title.classList.remove('title-swap');
-    title.classList.remove('title-long');
-    activeIndex = 0;
-    title.textContent = 'MAWBOUND';
-    title.setAttribute('data-text', 'MAWBOUND');
   }
 
   screen.addEventListener('mouseenter', () => {
