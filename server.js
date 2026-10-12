@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const path = require('path');
 
 const app = express();
@@ -100,29 +100,29 @@ const games = [
     title: 'Mawbound',
     tag: 'Horror',
     descEN: 'Coming soon.',
-    descTR: 'Çok yakında.',
-    descJP: '近日公開。',
-    descRU: 'Скоро.',
+    descTR: '├çok yak─▒nda.',
+    descJP: '×┐æµùÑÕà¼ÚûïÒÇé',
+    descRU: 'ºíº║º¥ªÇº¥.',
     fullDescEN: 'Coming soon.',
-    fullDescTR: 'Çok yakında.',
-    fullDescJP: '近日公開。',
-    fullDescRU: 'Скоро.',
+    fullDescTR: '├çok yak─▒nda.',
+    fullDescJP: '×┐æµùÑÕà¼ÚûïÒÇé',
+    fullDescRU: 'ºíº║º¥ªÇº¥.',
     releaseDate: 'TBA',
     image: '/images/GhostPath.jpg',
     trailer: 'https://www.youtube.com/watch?v=',
     statusEN: 'Coming Soon',
-    statusTR: 'Çok Yakında',
-    statusJP: '近日公開',
-    statusRU: 'Скоро',
+    statusTR: '├çok Yak─▒nda',
+    statusJP: '×┐æµùÑÕà¼Úûï',
+    statusRU: 'ºíº║º¥ªÇº¥',
     extraBadges: [
-      { en: 'Multiplayer', tr: 'Çok Oyunculu', jp: 'マルチプレイ', ru: 'Мультиплеер' }
+      { en: 'Multiplayer', tr: '├çok Oyunculu', jp: 'ÒâŞÒâ½ÒâüÒâùÒâ¼Òéñ', ru: 'º£ªâº╗ªîªéº©º┐º╗ºÁºÁªÇ' }
     ],
     chips: [
-      { icon: '👥', en: 'Multiplayer', tr: 'Çok Oyunculu', jp: 'マルチプレイ', ru: 'Мультиплеер' },
-      { icon: '🎉', en: 'Party Game', tr: 'Parti Oyunu', jp: 'パーティーゲーム', ru: 'Партийная игра' },
-      { icon: '😱', en: 'Horror & Fun', tr: 'Korku & Eğlence', jp: 'ホラー＆楽しさ', ru: 'Ужас и веселье' },
-      { icon: '🤝', en: 'Teamwork', tr: 'Takım Çalışması', jp: 'チームワーク', ru: 'Командная работа' },
-      { icon: '🗺️', en: 'Challenging & Eerie Maps', tr: 'Zorlayıcı ve Ürpertici Haritalar', jp: '難関で不気味なマップ', ru: 'Сложные и жуткие карты' }
+      { icon: '­şæÑ', en: 'Multiplayer', tr: '├çok Oyunculu', jp: 'ÒâŞÒâ½ÒâüÒâùÒâ¼Òéñ', ru: 'º£ªâº╗ªîªéº©º┐º╗ºÁºÁªÇ' },
+      { icon: '­şÄë', en: 'Party Game', tr: 'Parti Oyunu', jp: 'ÒâæÒâ╝ÒâåÒéúÒâ╝Òé▓Òâ╝Òâá', ru: 'ºşº░ªÇªéº©º╣º¢º░ªÅ º©º│ªÇº░' },
+      { icon: '­şİ▒', en: 'Horror & Fun', tr: 'Korku & E─şlence', jp: 'ÒâøÒâ®Òâ╝´╝åµÑ¢ÒüùÒüò', ru: 'ºúºÂº░ªü º© º▓ºÁªüºÁº╗ªîºÁ' },
+      { icon: '­şñØ', en: 'Teamwork', tr: 'Tak─▒m ├çal─▒┼şmas─▒', jp: 'ÒâüÒâ╝ÒâáÒâ»Òâ╝Òé»', ru: 'ºÜº¥º╝º░º¢º┤º¢º░ªÅ ªÇº░º▒º¥ªéº░' },
+      { icon: '­şù║´©Å', en: 'Challenging & Eerie Maps', tr: 'Zorlay─▒c─▒ ve ├£rpertici Haritalar', jp: 'ÚøúÚûóÒüğõ©ıµ░ùÕæ│Òü¬ÒâŞÒââÒâù', ru: 'ºíº╗º¥ºÂº¢ªïºÁ º© ºÂªâªéº║º©ºÁ º║º░ªÇªéªï' }
     ]
   },
   {
@@ -130,59 +130,29 @@ const games = [
     title: 'GhostSeries: Stay Inside',
     tag: 'Horror',
     descEN: 'Coming soon.',
-    descTR: 'Çok yakında.',
-    descJP: '近日公開。',
-    descRU: 'Скоро.',
+    descTR: '├çok yak─▒nda.',
+    descJP: '×┐æµùÑÕà¼ÚûïÒÇé',
+    descRU: 'ºíº║º¥ªÇº¥.',
     fullDescEN: 'Coming soon.',
-    fullDescTR: 'Çok yakında.',
-    fullDescJP: '近日公開。',
-    fullDescRU: 'Скоро.',
+    fullDescTR: '├çok yak─▒nda.',
+    fullDescJP: '×┐æµùÑÕà¼ÚûïÒÇé',
+    fullDescRU: 'ºíº║º¥ªÇº¥.',
     releaseDate: 'TBA',
     image: '/images/GhostPath.jpg',
     trailer: 'https://www.youtube.com/watch?v=',
     statusEN: 'Coming Soon',
-    statusTR: 'Çok Yakında',
-    statusJP: '近日公開',
-    statusRU: 'Скоро',
+    statusTR: '├çok Yak─▒nda',
+    statusJP: '×┐æµùÑÕà¼Úûï',
+    statusRU: 'ºíº║º¥ªÇº¥',
     extraBadges: [
-      { en: 'Singleplayer', tr: 'Tek Oyuncu', jp: 'シングルプレイ', ru: 'Одиночная игра' },
-      { en: 'Horror Story', tr: 'Korku Hikayesi', jp: 'ホラーストーリー', ru: 'Хоррор-история' }
+      { en: 'Singleplayer', tr: 'Tek Oyuncu', jp: 'ÒéÀÒâ│Òé░Òâ½ÒâùÒâ¼Òéñ', ru: 'ºŞº┤º©º¢º¥ªçº¢º░ªÅ º©º│ªÇº░' },
+      { en: 'Horror Story', tr: 'Korku Hikayesi', jp: 'ÒâøÒâ®Òâ╝Òé╣ÒâêÒâ╝Òâ¬Òâ╝', ru: 'ºÑº¥ªÇªÇº¥ªÇ-º©ªüªéº¥ªÇº©ªÅ' }
     ],
     chips: [
-      { icon: '👁️', en: 'Singleplayer', tr: 'Tek Oyuncu', jp: 'シングルプレイ', ru: 'Одиночная игра' },
-      { icon: '😱', en: 'Horror', tr: 'Korku', jp: 'ホラー', ru: 'Хоррор' },
-      { icon: '📖', en: 'Story-driven', tr: 'Hikaye Odaklı', jp: 'ストーリー重視', ru: 'Сюжетная' },
-      { icon: '🌫️', en: 'Atmospheric', tr: 'Atmosferik', jp: '雰囲気重視', ru: 'Атмосферная' }
-    ]
-  },
-  {
-    id: 'lowpressure',
-    title: 'LowPressure',
-    tag: 'Multiplayer',
-    descEN: 'Coming soon.',
-    descTR: 'Çok yakında.',
-    descJP: '近日公開。',
-    descRU: 'Скоро.',
-    fullDescEN: 'Coming soon.',
-    fullDescTR: 'Çok yakında.',
-    fullDescJP: '近日公開。',
-    fullDescRU: 'Скоро.',
-    releaseDate: 'TBA',
-    image: '/images/GhostPath.jpg',
-    trailer: 'https://www.youtube.com/watch?v=',
-    statusEN: 'Coming Soon',
-    statusTR: 'Çok Yakında',
-    statusJP: '近日公開',
-    statusRU: 'Скоро',
-    extraBadges: [
-      { en: 'Multiplayer', tr: 'Çok Oyunculu', jp: 'マルチプレイ', ru: 'Мультиплеер' },
-      { en: 'Social Deduction', tr: 'Sosyal Çıkarım', jp: '社会的推理', ru: 'Социальная дедукция' }
-    ],
-    chips: [
-      { icon: '👥', en: 'Multiplayer', tr: 'Çok Oyunculu', jp: 'マルチプレイ', ru: 'Мультиплеер' },
-      { icon: '🧠', en: 'Social Deduction', tr: 'Sosyal Çıkarım', jp: '社会的推理', ru: 'Социальная дедукция' },
-      { icon: '🌊', en: 'Underwater', tr: 'Deniz Altı', jp: '水中', ru: 'Подводный' },
-      { icon: '😱', en: 'Tension', tr: 'Gerilim', jp: '緊張感', ru: 'Напряжение' }
+      { icon: '­şæü´©Å', en: 'Singleplayer', tr: 'Tek Oyuncu', jp: 'ÒéÀÒâ│Òé░Òâ½ÒâùÒâ¼Òéñ', ru: 'ºŞº┤º©º¢º¥ªçº¢º░ªÅ º©º│ªÇº░' },
+      { icon: '­şİ▒', en: 'Horror', tr: 'Korku', jp: 'ÒâøÒâ®Òâ╝', ru: 'ºÑº¥ªÇªÇº¥ªÇ' },
+      { icon: '­şôû', en: 'Story-driven', tr: 'Hikaye Odakl─▒', jp: 'Òé╣ÒâêÒâ╝Òâ¬Òâ╝Úçı×Ğû', ru: 'ºíªÄºÂºÁªéº¢º░ªÅ' },
+      { icon: '­şî½´©Å', en: 'Atmospheric', tr: 'Atmosferik', jp: 'Úø░Õø▓µ░ùÚçı×Ğû', ru: 'ºÉªéº╝º¥ªüªäºÁªÇº¢º░ªÅ' }
     ]
   }
 ];
@@ -193,19 +163,19 @@ const news = [
     date: '2026-08-20',
     tag: 'Announcement',
     titleEN: 'Welcome to GhostPath Studio',
-    titleTR: 'GhostPath Studio\'ya Hoş Geldiniz',
-    titleJP: 'GhostPath Studioへようこそ',
-    titleRU: 'Добро пожаловать в GhostPath Studio',
-    descEN: 'We are an indie game development studio driven by passion, creativity, and the belief that every shadow tells a story. This website was built with our own hands to share our journey with you. We create atmospheric horror experiences where fear meets emotion. If you believe in indie spirit and raw, heartfelt game development — support us, follow us, and walk the path with us.',
-    descTR: 'Tutku, yaratıcılık ve her gölgenin bir hikaye anlattığına dair inançla hareket eden bağımsız bir oyun geliştirme stüdyosuyuz. Bu web sitesini sizinle yolculuğumuzu paylaşmak için kendi ellerimizle inşa ettik. Korkunun duyguyla buluştuğu atmosferik horror deneyimleri yaratıyoruz. Bağımsız ruha ve içten, samimi oyun geliştirme sürecine inanıyorsanız bizi destekleyin, takip edin ve bu yolda bizimle yürüyün.',
-    descJP: '情熱、創造力、そしてすべての影が物語を語ると信じる私たちが運営するインディーゲーム開発スタジオです。このウェブサイトは、皆様と私たちの歩みを分かち合うために、自らの手で作り上げました。恐怖と感情が融合するアトモスフェアリックなホラーエクスペリエンスを創造しています。インディースピリットと心のこもったゲーム開発を信じる方は、私たちを応援し、フォローし、共にこの道を歩んでください。',
-    descRU: 'Мы — студия инди-разработки игр, движимая страстью, творчеством и верой в то, что каждая тень рассказывает свою историю. Этот сайт создан нашими собственными руками, чтобы поделиться с вами нашим путём. Мы создаём атмосферные хоррор-переживания, где страх встречается с эмоцией. Если вы верите в инди-дух и искреннюю, heartfelt разработку игр — поддержите нас, следите за нами и идите этим путём вместе с нами.'
+    titleTR: 'GhostPath Studio\'ya Ho┼ş Geldiniz',
+    titleJP: 'GhostPath StudioÒü©ÒéêÒüåÒüôÒüØ',
+    titleRU: 'ºöº¥º▒ªÇº¥ º┐º¥ºÂº░º╗º¥º▓º░ªéªî º▓ GhostPath Studio',
+    descEN: 'We are an indie game development studio driven by passion, creativity, and the belief that every shadow tells a story. This website was built with our own hands to share our journey with you. We create atmospheric horror experiences where fear meets emotion. If you believe in indie spirit and raw, heartfelt game development ÔÇö support us, follow us, and walk the path with us.',
+    descTR: 'Tutku, yarat─▒c─▒l─▒k ve her g├Âlgenin bir hikaye anlatt─▒─ş─▒na dair inan├ğla hareket eden ba─ş─▒ms─▒z bir oyun geli┼ştirme st├╝dyosuyuz. Bu web sitesini sizinle yolculu─şumuzu payla┼şmak i├ğin kendi ellerimizle in┼şa ettik. Korkunun duyguyla bulu┼ştu─şu atmosferik horror deneyimleri yarat─▒yoruz. Ba─ş─▒ms─▒z ruha ve i├ğten, samimi oyun geli┼ştirme s├╝recine inan─▒yorsan─▒z bizi destekleyin, takip edin ve bu yolda bizimle y├╝r├╝y├╝n.',
+    descJP: 'µâàå▒ÒÇüÕëÁÚÇáÕèøÒÇüÒüØÒüùÒüĞÒüÖÒü╣ÒüĞÒü«Õ¢▒Òüîë®×¬ŞÒéÆ×¬ŞÒéïÒü¿õ┐íÒüİÒéïğüÒüşÒüíÒüîÚüïÕûÂÒüÖÒéïÒéñÒâ│ÒâçÒéúÒâ╝Òé▓Òâ╝ÒâáÚûïÖ║Òé╣Òé┐Òé©Òé¬ÒüğÒüÖÒÇéÒüôÒü«ÒéĞÒéğÒâûÒéÁÒéñÒâêÒü»ÒÇüÜåµğİÒü¿ğüÒüşÒüíÒü«µ¡®Òü┐ÒéÆÕêåÒüïÒüíÕÉêÒüåÒüşÒéüÒü½ÒÇü×ç¬ÒéëÒü«µëïÒüğõ¢£Òéèõ©èÒüÆÒü¥ÒüùÒüşÒÇéµüÉµÇûÒü¿µäşµâàÒüî×ŞıÕÉêÒüÖÒéïÒéóÒâêÒâóÒé╣ÒâòÒéğÒéóÒâ¬ÒââÒé»Òü¬ÒâøÒâ®Òâ╝Òé¿Òé»Òé╣ÒâÜÒâ¬Òé¿Òâ│Òé╣ÒéÆÕëÁÚÇáÒüùÒüĞÒüäÒü¥ÒüÖÒÇéÒéñÒâ│ÒâçÒéúÒâ╝Òé╣ÒâöÒâ¬ÒââÒâêÒü¿Õ┐âÒü«ÒüôÒééÒüúÒüşÒé▓Òâ╝ÒâáÚûïÖ║ÒéÆõ┐íÒüİÒéïµû╣Òü»ÒÇüğüÒüşÒüíÒéÆÕ┐£µÅ┤ÒüùÒÇüÒâòÒé®Òâ¡Òâ╝ÒüùÒÇüÕà▒Òü½ÒüôÒü«ÚüôÒéÆµ¡®ÒéôÒüğÒüÅÒüáÒüòÒüäÒÇé',
+    descRU: 'º£ªï ÔÇö ªüªéªâº┤º©ªÅ º©º¢º┤º©-ªÇº░ºÀªÇº░º▒º¥ªéº║º© º©º│ªÇ, º┤º▓º©ºÂº©º╝º░ªÅ ªüªéªÇº░ªüªéªîªÄ, ªéº▓º¥ªÇªçºÁªüªéº▓º¥º╝ º© º▓ºÁªÇº¥º╣ º▓ ªéº¥, ªçªéº¥ º║º░ºÂº┤º░ªÅ ªéºÁº¢ªî ªÇº░ªüªüº║º░ºÀªïº▓º░ºÁªé ªüº▓º¥ªÄ º©ªüªéº¥ªÇº©ªÄ. º¡ªéº¥ªé ªüº░º╣ªé ªüº¥ºÀº┤º░º¢ º¢º░ªêº©º╝º© ªüº¥º▒ªüªéº▓ºÁº¢º¢ªïº╝º© ªÇªâº║º░º╝º©, ªçªéº¥º▒ªï º┐º¥º┤ºÁº╗º©ªéªîªüªÅ ªü º▓º░º╝º© º¢º░ªêº©º╝ º┐ªâªéªæº╝. º£ªï ªüº¥ºÀº┤º░ªæº╝ º░ªéº╝º¥ªüªäºÁªÇº¢ªïºÁ ªàº¥ªÇªÇº¥ªÇ-º┐ºÁªÇºÁºÂº©º▓º░º¢º©ªÅ, º│º┤ºÁ ªüªéªÇº░ªà º▓ªüªéªÇºÁªçº░ºÁªéªüªÅ ªü ªıº╝º¥ªåº©ºÁº╣. ºòªüº╗º© º▓ªï º▓ºÁªÇº©ªéºÁ º▓ º©º¢º┤º©-º┤ªâªà º© º©ªüº║ªÇºÁº¢º¢ªÄªÄ, heartfelt ªÇº░ºÀªÇº░º▒º¥ªéº║ªâ º©º│ªÇ ÔÇö º┐º¥º┤º┤ºÁªÇºÂº©ªéºÁ º¢º░ªü, ªüº╗ºÁº┤º©ªéºÁ ºÀº░ º¢º░º╝º© º© º©º┤º©ªéºÁ ªıªéº©º╝ º┐ªâªéªæº╝ º▓º╝ºÁªüªéºÁ ªü º¢º░º╝º©.'
   }
 ];
 
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'GhostPath Studio — Indie Game Studio',
+    title: 'GhostPath Studio ÔÇö Indie Game Studio',
     currentPage: 'home',
     games,
     news
@@ -214,7 +184,7 @@ app.get('/', (req, res) => {
 
 app.get('/news', (req, res) => {
   res.render('news', {
-    title: 'News & Updates — GhostPath Studio',
+    title: 'News & Updates ÔÇö GhostPath Studio',
     currentPage: 'news',
     news
   });
@@ -257,13 +227,13 @@ app.get('/api/news/:id', (req, res) => {
 });
 
 app.get('/games/:id', (req, res) => {
-    const game = games.find(g => g.id === req.params.id);
-    if (!game) return res.redirect('/');
-    res.render('game', {
-      title: game.title + ' — GhostPath Studio',
-      currentPage: 'games',
-      game
-    });
+  const game = games.find(g => g.id === req.params.id);
+  if (!game) return res.redirect('/');
+  res.render('game', {
+    title: game.title + ' ÔÇö GhostPath Studio',
+    currentPage: 'games',
+    game
+  });
 });
 
 // Generic error handler: never leak internals
